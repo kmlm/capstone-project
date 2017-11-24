@@ -31,7 +31,7 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account Management
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">ChangePassword</a></li>
+                <li><a href="#" data-target="#ChangePasswordModal" data-toggle="modal">Change Password</a></li>
                 <li><a href="#">Change Favorite Team</a></li>
               </ul>
             </li>
@@ -104,7 +104,32 @@
   </div>
 </div>
 
+<div id="ChangePasswordModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Change Password</h4>
+      </div>
+      <div class="modal-body">
+        <form id="change-password-form">
+      <fieldset>
+        <!-- <legend>Change Password</legend> -->
+        <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
+        <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
+        <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
+        <!-- <section id="passwordChange"></section> -->
+      </fieldset>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <!-- Landing Page - Signed Out -->
