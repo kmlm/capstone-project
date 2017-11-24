@@ -24,6 +24,7 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="#">EPLdashboard</a>
         </div>
+        <section class='Signed-In-Nav'>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">My Dashboard</a></li>
           <li><a href="#">Game Tracker</a></li>
@@ -37,10 +38,17 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a id='Signed-In-User-Email'>User Id</a></li>
+          <!-- <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
+      </section>
+      <section class='Signed-Out-Nav'>
+        <ul class="nav navbar-nav navbar-right">
           <li><a href="#" data-target="#SignUpModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
-      </div>
+    </section>
+    </div>
     </nav>
   </div>
 
@@ -117,8 +125,8 @@
         <form id="change-password-form">
       <fieldset>
         <!-- <legend>Change Password</legend> -->
-        <input type="password" name="passwords[old]" placeholder="Enter Password" required id="changeOld">
-        <input type="password" name="passwords[new]" placeholder="Enter New Password" required id="changeNew">
+        <input type="password" name="passwords[old]" placeholder="Current Password" required id="changeOld">
+        <input type="password" name="passwords[new]" placeholder="New Password" required id="changeNew">
         <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
         <!-- <section id="passwordChange"></section> -->
       </fieldset>
