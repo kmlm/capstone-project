@@ -37,12 +37,75 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="#" data-target="#SignUpModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </nav>
   </div>
+
+<!-- Modals -->
+
+<div id="SignUpModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="sign-up">
+          <fieldset>
+            <!-- <legend>Sign up!</legend> -->
+            <input type="email" name="credentials[email]" placeholder="Enter Email" required id="signUpEmail">
+            <input type="password" name="credentials[password]" placeholder="Enter Password" required id="signUpPassword">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id="signUpPasswordConf">
+            <button type="submit" name="submit" value="Sign Up!" class="btn btn-primary">Submit</button>
+            <br>
+          </fieldset>
+        </form>
+        <br>
+        <!-- <a href='#' data-target="#LoginModal" data-toggle="modal" data-dismiss="modal"><span> Already have an account? Sign In Here</span> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="LoginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form id="login">
+          <fieldset>
+            <!-- <legend>Sign up!</legend> -->
+            <input type="email" name="credentials[email]" placeholder="Enter Email" required id="loginEmail">
+            <input type="password" name="credentials[password]" placeholder="Enter Password" required id="loginPassword">
+            <button type="submit" name="submit" value="Login!" class="btn btn-primary">Submit</button>
+            <br>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
   <!-- Landing Page - Signed Out -->
 
@@ -229,8 +292,8 @@
         <div class="col-lg-8">
           <p> Sign Up or Login to begin!</p>
 
-          <button type="button" class="btn btn-primary">Sign Up</button>
-          <button type="button" class="btn btn-success">Login</button>
+          <button type="button" class="btn btn-primary" data-target="#SignUpModal" data-toggle="modal" >Sign Up</button>
+          <button type="button" class="btn btn-success" data-target="#LoginModal" data-toggle="modal">Login</button>
         </div>
       </div>
 
