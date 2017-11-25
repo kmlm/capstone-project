@@ -334,8 +334,10 @@
 
   </div>
 
+<div class="container">
+  <button data-toggle="collapse" data-target="#ChooseTeam">Choose Team</button>
 <!-- Choose Team  -->
-<div id='ChooseTeam' class="container">
+<div id='ChooseTeam' class="collapse">
 
   <div class="col-lg-5">
     <h2>Choose Your Team</h2>
@@ -432,17 +434,176 @@
   </div>
 
 </div>
+</div>
 
 <!-- My Dashboard -->
+<div id="Dashboard" class='container'>
 
-<div id='Dashboard'>
+<button type="button" id='next-fixture-button' class="btn btn-success"> Next Fixture</button>
+
+<button type="button" id='top-scorers-button' class="btn btn-success"> Top Scorers</button>
+
+</div>
+
+<div id='MatchCentre'>
+
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+     <!-- Load additional library -->
+     <script src="https://statsfc-4f51.kxcdn.com/widget/tipso.min.js"></script>
+     <link rel="stylesheet" href="https://statsfc-4f51.kxcdn.com/widget/tipso.min.css">
+
+     <!-- Load Stats FC Results SDK -->
+     <script>
+         (function(d, s, id) {
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) return;
+             js = d.createElement(s); js.id = id;
+             js.src = 'https://statsfc-4f51.kxcdn.com/widget/match-centre.js';
+             fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'statsfc-match-centre-js'));
+     </script>
+
+     <!-- Your results here -->
+     <div class="statsfc-match-centre"
+         data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+         data-team="Liverpool">
+     </div>
+</div>
 
 
+<div id='NextFixture'>
 
+  <!-- Load jQuery -->
+      <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+      <!-- Load Stats FC Next Fixture SDK -->
+      <script>
+          (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://statsfc-4f51.kxcdn.com/widget/next-fixture-1.0.js';
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'statsfc-next-fixture-js'));
+      </script>
+
+      <!-- Your next fixture here -->
+      <div class="statsfc-next-fixture"
+          data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+          data-team="Tottenham"
+          data-use-default-css="true">
+      </div>
 
 </div>
 
 
+<div id='Form'>
+
+  <!-- Load jQuery -->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- Load Stats FC Team Form SDK -->
+  <script>
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://statsfc-4f51.kxcdn.com/widget/form-2.0.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'statsfc-form-js'));
+  </script>
+
+  <!-- Your team form here -->
+  <div class="statsfc-form"
+      data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+      data-competition="EPL"
+      data-show-badges="true"
+      data-show-score="true"
+      data-use-default-css="true">
+  </div>
+</div>
+
+<div id='League-Table'>
+
+  <!-- Load jQuery -->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- Load Stats FC League Table SDK -->
+  <script>
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://statsfc-4f51.kxcdn.com/widget/table-2.0.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'statsfc-table-js'));
+  </script>
+
+  <!-- Your league table here -->
+  <div class="statsfc-table"
+      data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+      data-competition="EPL"
+      data-table-type="full"
+      data-show-badges="true"
+      data-use-default-css="true">
+  </div>
+
+
+</div>
+
+<div id='Fixtures'>
+
+      <!-- Load jQuery -->
+      <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+      <!-- Load Stats FC Fixtures SDK -->
+      <script>
+          (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://statsfc-4f51.kxcdn.com/widget/fixtures-2.0.js';
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'statsfc-fixtures-js'));
+      </script>
+
+      <!-- Your fixtures here -->
+      <div class="statsfc-fixtures"
+          data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+          data-competition="EPL"
+          data-show-badges="true"
+          data-use-default-css="true">
+      </div>
+
+</div>
+
+<div id='Top-Scorers'
+
+
+    <!-- Load jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Load Stats FC Top Scorers SDK -->
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://statsfc-4f51.kxcdn.com/widget/top-scorers-2.0.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'statsfc-top-scorers-js'));
+    </script>
+
+    <!-- Your top scorers here -->
+    <div class="statsfc-top-scorers"
+        data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+        data-competition="EPL"
+        data-show-badges="true"
+        data-use-default-css="true">
+    </div>
+
+</div>
 
 
 
