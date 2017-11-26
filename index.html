@@ -439,41 +439,58 @@
 <!-- My Dashboard -->
 <div id="Dashboard" class='container'>
 
-<button type="button" id='next-fixture-button' class="btn btn-success"> Next Fixture</button>
+<button type="button" id='match-centre-button' class="toggle btn btn-success"> Live Match Centre </button>
 
-<button type="button" id='top-scorers-button' class="btn btn-success"> Top Scorers</button>
+<button type="button" id='next-fixture-button' class="toggle btn btn-success"> Next Fixture</button>
 
+<button type="button" id='top-scorers-button' class="toggle btn btn-success"> Top Scorers</button>
+
+<button type="button" id='League-Table-button' class="toggle btn btn-success"> League Table</button>
+
+<button type="button" id='Form-button' class="toggle btn btn-success"> Recent Form</button>
+
+<button type="button" id='Fixtures-button' class="toggle btn btn-success"> Fixtures</button>
 </div>
+
+
 
 <div id='MatchCentre'>
 
-  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <hr class="featurette-divider">
 
-     <!-- Load additional library -->
-     <script src="https://statsfc-4f51.kxcdn.com/widget/tipso.min.js"></script>
-     <link rel="stylesheet" href="https://statsfc-4f51.kxcdn.com/widget/tipso.min.css">
+    <h2> Live Match Centre </h2>
+    <!-- Load jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
-     <!-- Load Stats FC Results SDK -->
-     <script>
-         (function(d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) return;
-             js = d.createElement(s); js.id = id;
-             js.src = 'https://statsfc-4f51.kxcdn.com/widget/match-centre.js';
-             fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'statsfc-match-centre-js'));
-     </script>
+    <!-- Load additional library -->
+    <script src="https://statsfc-4f51.kxcdn.com/widget/tipso.min.js"></script>
+    <link rel="stylesheet" href="https://statsfc-4f51.kxcdn.com/widget/tipso.min.css">
 
-     <!-- Your results here -->
-     <div class="statsfc-match-centre"
-         data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
-         data-team="Liverpool">
-     </div>
+    <!-- Load Stats FC Results SDK -->
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://statsfc-4f51.kxcdn.com/widget/match-centre.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'statsfc-match-centre-js'));
+    </script>
+
+    <!-- Your results here -->
+    <div class="statsfc-match-centre"
+        data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+        data-team="Liverpool">
+    </div>
 </div>
+
 
 
 <div id='NextFixture'>
 
+  <hr class="featurette-divider">
+
+  <h2> Next Fixture </h2>
   <!-- Load jQuery -->
       <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -498,8 +515,12 @@
 </div>
 
 
+
 <div id='Form'>
 
+  <hr class="featurette-divider">
+
+  <h2> Recent Form </h2>
   <!-- Load jQuery -->
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -524,8 +545,14 @@
   </div>
 </div>
 
+
+
+
 <div id='League-Table'>
 
+  <hr class="featurette-divider">
+
+  <h2> League Table </h2>
   <!-- Load jQuery -->
   <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -552,8 +579,13 @@
 
 </div>
 
+
+
 <div id='Fixtures'>
 
+  <hr class="featurette-divider">
+
+  <h2> Upcoming Fixtures </h2>
       <!-- Load jQuery -->
       <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -578,9 +610,13 @@
 
 </div>
 
-<div id='Top-Scorers'
 
 
+<div id='Top-Scorers'>
+
+  <hr class="featurette-divider">
+
+<h2> Top Scorers </h2>
     <!-- Load jQuery -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
