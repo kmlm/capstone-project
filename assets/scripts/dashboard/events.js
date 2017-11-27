@@ -3,8 +3,13 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
-const dashboardHandlers = function () {
+const populateDashboard = function (data) {
+  console.log('dashboard data is', data)
+}
 
+
+
+const dashboardHandlers = function () {
 // buttons for showing / hiding on dashboard
 $('#next-fixture-button').on('click', () => $('#NextFixture').toggle())
 $('#top-scorers-button').on('click', () => $('#Top-Scorers').toggle())
@@ -16,5 +21,6 @@ $('#Fixtures-button').on('click', () => $('#Fixtures').toggle())
 
 
 module.exports = {
-  dashboardHandlers
+  dashboardHandlers,
+  populateDashboard
 }

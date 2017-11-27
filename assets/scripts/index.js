@@ -4,6 +4,9 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const authEvents = require('./auth/events')
 const dashboardEvents = require('./dashboard/events')
+const chooseTeamEvents = require('./chooseteam/events')
+
+
 $(() => {
   setAPIOrigin(location, config)
 })
@@ -11,8 +14,7 @@ $(() => {
 $(() => {
   authEvents.authHandlers(),
   dashboardEvents.dashboardHandlers()
-  // ui.uiHandlers()
-  // siteUi.uiHandlers()
+  chooseTeamEvents.chooseTeamHandlers()
 })
 
 
