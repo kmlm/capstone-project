@@ -10,9 +10,11 @@ const populateDashboard = function (data) {
 const myDashboard = function () {
   if ( store.team !== undefined && store.team !== null){
     $('#Dashboard').show()
+    $('#GameTracker').hide()
   } else {
     $('#ChooseTeam').show()
     $('#Dashboard').hide()
+    $('#GameTracker').hide()
   }
 }
 
