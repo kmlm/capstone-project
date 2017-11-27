@@ -13,17 +13,16 @@ const onSignUp = function (event) {
     document.getElementById('sign-up').reset()
     api.signUp(data)
       .then(ui.signUpSuccess)
-      // .then(() => api.signIn(dataSave))
+      .then(() => api.signIn(dataSave))
       // .then(ui.signInNewUserSuccess)
-      // .catch(ui.signUpFailure)
+      .then(ui.signInSuccess)
+      .catch(ui.signUpFailure)
   }
 }
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  $('#passwordChange').text('')
-  reuse.removeValMultipleTextFields(['#signInEmail', '#signInPassword'])
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -69,7 +68,7 @@ const clearPassword = function () {
 
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
+  $('#login').on('submit', onSignIn)
   $('#signOut').on('click', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('#passwordClose').on('click', clearPassword)

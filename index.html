@@ -39,6 +39,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id='Signed-In-User-Email'>User Id</a></li>
+          <li><a id='Sign-Out'>Sign Out</a></li>
           <!-- <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
         </ul>
       </section>
@@ -79,7 +80,7 @@
         <!-- <a href='#' data-target="#LoginModal" data-toggle="modal" data-dismiss="modal"><span> Already have an account? Sign In Here</span> -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='sign-up-modal-close'>Close</button>
       </div>
     </div>
   </div>
@@ -103,11 +104,12 @@
             <input type="password" name="credentials[password]" placeholder="Enter Password" required id="loginPassword">
             <button type="submit" name="submit" value="Login!" class="btn btn-primary">Submit</button>
             <br>
+            <p id='login-message'> </p>
           </fieldset>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='login-modal-close'>Close</button>
       </div>
     </div>
   </div>

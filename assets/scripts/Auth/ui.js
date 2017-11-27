@@ -3,9 +3,9 @@
 const store = require('../store.js')
 
 
-
 const signUpSuccess = function (data) {
   console.log('successful sign up')
+  $('#sign-up-modal-close').click()
 }
 
 const signUpFailure = function () {
@@ -23,15 +23,23 @@ const onSignUpModalLinkClink = function (event) {
 }
 
 const signInSuccess = function (data) {
-
   store.user = data.user
   const user = store.user.email
-  $('#userNameNav').append(user)
-
+  $('#Signed-In-User-Email').text(user)
+  console.log('signInWorked')
+  console.log(store.user)
+  $('.Signed-In-Nav').show()
+  $('.Signed-Out-Nav').hide()
+  $('#login-modal-close').click()
+  document.getElementById('login').reset()
+  document.getElementById('sign-up').reset()
 }
 
 const signInFailure = function () {
-
+  console.log('failed')
+  $('#login-message').text('Unable to login with that information')
+  document.getElementById('login').reset()
+  document.getElementById('sign-up').reset()
 }
 
 const signInNewUserSuccess = function (data) {
