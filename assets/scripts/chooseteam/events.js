@@ -17,8 +17,20 @@ const onChooseTeam = function (event) {
       // .catch(ui.chooseTeamFailure)
 }
 
+const onChangeTeam = function () {
+  $('#Dashboard').hide()
+  $('#ChooseTeam').show()
+  store.team = null
+}
+
+// const testHide = function () {
+//   $('#Dashboard').hide()
+// }
+
 const chooseTeamHandlers = function () {
 $('.team-choice').on('click', onChooseTeam)
+$('#change-favorite-team').on('click', onChangeTeam)
+$('#game-tracker').on('click', testHide)
 }
 
 module.exports = {
