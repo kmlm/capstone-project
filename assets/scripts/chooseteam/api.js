@@ -19,5 +19,5 @@ const store = require('../store')
 //   }
 
 module.exports = {
-  chooseTeam
+  // chooseTeam
 }
