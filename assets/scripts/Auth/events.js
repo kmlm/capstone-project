@@ -28,12 +28,12 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
-const onSignUpLinkClick = function (event) {
-  event.preventDefault()
-  reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage'])
-  reuse.hideMultipleFields(['#sign-up', '#signInModal'])
-  reuse.showMultipleFields(['#sign-in', '#signUpModal'])
-}
+// const onSignUpLinkClick = function (event) {
+//   event.preventDefault()
+//   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage'])
+//   reuse.hideMultipleFields(['#sign-up', '#signInModal'])
+//   reuse.showMultipleFields(['#sign-in', '#signUpModal'])
+// }
 
 const onSignOut = function (event) {
   event.preventDefault()
@@ -45,7 +45,6 @@ const onSignOut = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  reuse.removeValMultipleTextFields(['#changeOld', '#changeNew'])
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {
@@ -55,24 +54,41 @@ const onChangePassword = function (event) {
   } else if (data.passwords.new === data.passwords.old) {
     $('#passwordChange').text('New and old passwords are the same. Please try again')
   } else {
+    console.log(data)
     api.changePassword(data)
       .then(ui.changePasswordSuccess)
       .catch(ui.changePasswordFailure)
   }
 }
 
+const clearLogin = function () {
+  document.getElementById('login').reset()
+  $('#login-message').text('')
+}
+
+const clearSignUp = function () {
+  document.getElementById('sign-up').reset()
+  $('#sign-up-modal-message').text(
+'')
+}
+
 const clearPassword = function () {
-  event.preventDefault()
   $('#passwordChange').text('')
+  document.getElementById('change-password-form').reset()
 }
 
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#login').on('submit', onSignIn)
   $('#Sign-Out').on('click', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
-  $('#passwordClose').on('click', clearPassword)
-  $('#signUpLink').on('click', onSignUpLinkClick)
+  $('#change-password-form').on('submit', onChangePassword)
+  $('#cp-modal-close').on('click', clearPassword)
+  $('#login-modal-close').on(
+  'click', clearLogin)
+  $('#sign-up-modal-close').on(
+    'click', clearSignUp)
+  // $('#signUpLink').on('click', onSignUpLinkClick)
+  $(document).on('click', () => $('#doc-message').text(''))
 }
 
 module.exports = {

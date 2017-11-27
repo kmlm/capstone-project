@@ -10,17 +10,18 @@ const signUpSuccess = function (data) {
 
 const signUpFailure = function () {
   console.log('sign up failed')
-}
-
-const onSignInLinkClick = function (event) {
-  event.preventDefault()
 
 }
 
-const onSignUpModalLinkClink = function (event) {
-  event.preventDefault()
-
-}
+// const onSignInLinkClick = function (event) {
+//   event.preventDefault()
+//
+// }
+//
+// const onSignUpModalLinkClink = function (event) {
+//   event.preventDefault()
+//
+// }
 
 const signInSuccess = function (data) {
   store.user = data.user
@@ -31,8 +32,11 @@ const signInSuccess = function (data) {
   $('.Signed-In-Nav').show()
   $('.Signed-Out-Nav').hide()
   $('#login-modal-close').click()
-  document.getElementById('login').reset()
-  document.getElementById('sign-up').reset()
+  // document.getElementById('login').reset()
+  // document.getElementById('sign-up').reset()
+//   $('#sign-up-modal-message').text(
+// ''
+//   )
   $('#Landing-Page-Signed-Out').hide()
   if(store.team === undefined || store.team === null) {
     $('#ChooseTeam').show()
@@ -71,24 +75,28 @@ const signOutFailure = function () {
 }
 
 const changePasswordSuccess = function () {
+  $('#cp-modal-close').click()
+  $('#doc-message').text('Password Changed Successfully')
 }
 
 const changePasswordFailure = function () {
+  console.log('Change Password failure')
+  $('#passwordChange').text('Please confirm your current password')
 }
 
-const uiHandlers = function () {
-  $('#signInModal').on('click', onSignInLinkClick)
-  $('#signInAfterSignUp').on('click', onSignInLinkClick)
-  $('#signUpModal').on('click', onSignUpModalLinkClink)
-}
+// const uiHandlers = function () {
+//   $('#signInModal').on('click', onSignInLinkClick)
+//   $('#signInAfterSignUp').on('click', onSignInLinkClick)
+//   $('#signUpModal').on('click', onSignUpModalLinkClink)
+// }
 
 module.exports = {
-  uiHandlers,
+  // uiHandlers,
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
-  onSignInLinkClick,
+  // onSignInLinkClick,
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,

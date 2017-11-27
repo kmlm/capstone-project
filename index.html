@@ -53,6 +53,11 @@
     </nav>
   </div>
 
+<!-- Doc Message -->
+<div class='container'>
+  <h3 id='doc-message'></h3>
+</div>
+
 <!-- Modals -->
 
 <div id="SignUpModal" class="modal fade" role="dialog">
@@ -131,12 +136,12 @@
         <input type="password" name="passwords[old]" placeholder="Current Password" required id="changeOld">
         <input type="password" name="passwords[new]" placeholder="New Password" required id="changeNew">
         <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
-        <!-- <section id="passwordChange"></section> -->
       </fieldset>
     </form>
+    <p id="passwordChange"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='cp-modal-close'>Close</button>
       </div>
     </div>
   </div>
