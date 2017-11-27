@@ -48,6 +48,7 @@ const signOutSuccess = function () {
   $('.Signed-Out-Nav').show()
   $('#Dashboard').hide()
   $('#ChooseTeam').hide()
+  $('#GameTracker').hide()
   $('#Landing-Page-Signed-Out').show()
   $('#Signed-In-User-Email').text('')
   store.user = null
