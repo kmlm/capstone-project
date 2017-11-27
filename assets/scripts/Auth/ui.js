@@ -2,7 +2,6 @@
 
 const store = require('../store.js')
 
-
 const signUpSuccess = function (data) {
   console.log('successful sign up')
   $('#sign-up-modal-close').click()

@@ -7,7 +7,14 @@ const populateDashboard = function (data) {
   console.log('dashboard data is', data)
 }
 
-
+const myDashboard = function () {
+  if ( store.team !== undefined && store.team !== null){
+    $('#Dashboard').show()
+  } else {
+    $('#ChooseTeam').show()
+    $('#Dashboard').hide()
+  }
+}
 
 const dashboardHandlers = function () {
 // buttons for showing / hiding on dashboard
@@ -17,6 +24,8 @@ $('#League-Table-button').on('click', () => $('#League-Table').toggle())
 $('#Form-button').on('click', () => $('#Form').toggle())
 $('#Fixtures-button').on('click', () => $('#Fixtures').toggle())
 // $('#match-centre-button').on('click', () => $('#MatchCentre').toggle())
+
+$('#myDashboard').on('click', myDashboard)
 }
 
 
