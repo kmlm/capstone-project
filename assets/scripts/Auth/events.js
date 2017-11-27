@@ -28,12 +28,6 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
-// const onSignUpLinkClick = function (event) {
-//   event.preventDefault()
-//   reuse.emptyMultipleTextFields(['#messageContent', '#signInMessage'])
-//   reuse.hideMultipleFields(['#sign-up', '#signInModal'])
-//   reuse.showMultipleFields(['#sign-in', '#signUpModal'])
-// }
 
 const onSignOut = function (event) {
   event.preventDefault()
@@ -87,7 +81,6 @@ const authHandlers = function () {
   'click', clearLogin)
   $('#sign-up-modal-close').on(
     'click', clearSignUp)
-  // $('#signUpLink').on('click', onSignUpLinkClick)
   $(document).on('click', () => $('#doc-message').text(''))
 }
 
