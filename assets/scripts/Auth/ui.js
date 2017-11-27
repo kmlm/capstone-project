@@ -9,7 +9,7 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function () {
-
+  console.log('sign up failed')
 }
 
 const onSignInLinkClick = function (event) {
@@ -33,6 +33,13 @@ const signInSuccess = function (data) {
   $('#login-modal-close').click()
   document.getElementById('login').reset()
   document.getElementById('sign-up').reset()
+  $('#Landing-Page-Signed-Out').hide()
+  if(store.team === undefined || store.team === null) {
+    $('#ChooseTeam').show()
+  }
+  else {
+    $('#Dashboard').show()
+  }
 }
 
 const signInFailure = function () {
@@ -47,9 +54,20 @@ const signInNewUserSuccess = function (data) {
 }
 
 const signOutSuccess = function () {
+  $('.Signed-In-Nav').hide()
+  $('.Signed-Out-Nav').show()
+  $('#Dashboard').hide()
+  $('#ChooseTeam').hide()
+  $('#Landing-Page-Signed-Out').show()
+  $('#Signed-In-User-Email').text('')
+  store.user = null
+  store.team = null
+  console.log(store)
+  console.log('sign out successful')
 }
 
 const signOutFailure = function () {
+  console.log('sign out failed')
 }
 
 const changePasswordSuccess = function () {

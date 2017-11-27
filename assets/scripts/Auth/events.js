@@ -69,7 +69,7 @@ const clearPassword = function () {
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#login').on('submit', onSignIn)
-  $('#signOut').on('click', onSignOut)
+  $('#Sign-Out').on('click', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('#passwordClose').on('click', clearPassword)
   $('#signUpLink').on('click', onSignUpLinkClick)
