@@ -8,6 +8,12 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
+$(() => {
+  authEvents.authHandlers()
+  // ui.uiHandlers()
+  // siteUi.uiHandlers()
+})
+
 $('#next-fixture-button').on('click', () => $('#NextFixture').toggle())
 
 $('#top-scorers-button').on('click', () => $('#Top-Scorers').toggle())
