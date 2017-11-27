@@ -5,7 +5,7 @@ const config = require('./config')
 const authEvents = require('./auth/events')
 const dashboardEvents = require('./dashboard/events')
 const chooseTeamEvents = require('./chooseteam/events')
-
+const gameTracker = require('./gametracker/events')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -15,6 +15,7 @@ $(() => {
   authEvents.authHandlers(),
   dashboardEvents.dashboardHandlers()
   chooseTeamEvents.chooseTeamHandlers()
+  gameTracker.gameTrackerHandlers()
 })
 
 
