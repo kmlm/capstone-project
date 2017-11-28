@@ -17,11 +17,12 @@ const onChooseTeam = function (event) {
   const replaced = html.replace('test',store.team)
   console.log(replaced)
   $('#added-fixture').append(replaced)
-    // api.chooseTeam(store.team)
-      ui.chooseTeamSuccess(store.team)
-      dashboard.populateDashboard(store.team
-    )
-      // .catch(ui.chooseTeamFailure)
+    api.chooseTeam(store.team)
+    .then(console.log)
+    //   ui.chooseTeamSuccess(store.team)
+    //   dashboard.populateDashboard(store.team
+    // )
+      .catch(ui.chooseTeamFailure)
 }
 
 const onChangeTeam = function () {
