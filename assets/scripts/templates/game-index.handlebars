@@ -1,4 +1,4 @@
-{{#each games as |game|}}
+<!-- {{#each games as |game|}}
 <br>
   <div class="panel panel-info" data-id="{{game.id}}">
       <div class="panel-heading" >
@@ -29,4 +29,15 @@
       </div>
     </div>
   </div>
+{{/each}} -->
+
+
+{{#each games as |game|}}
+<br>
+  <div class="panel panel-info" >
+  <div class="panel-heading" data-id="{{game.id}}">
+        <button class='allGamesButton btn btn-primary'>{{game.home}} vs. {{game.away}} - {{game.date}}</button>
+</div>
+</div>
+
 {{/each}}

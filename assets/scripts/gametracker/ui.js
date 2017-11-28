@@ -18,6 +18,7 @@ const getGamesSuccess = function (games) {
       $('#GamesList').html(showGames)
 }
 
+
 const getGamesFailure = function () {
   console.error()
 }

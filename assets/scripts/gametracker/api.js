@@ -11,8 +11,17 @@ const getGames = function () {
     })
   }
 
-
+  const getOneGame = function (id) {
+    return $.ajax({
+        url: config.apiOrigin + '/games/' + id,
+        method: 'GET',
+        headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+      })
+    }
 
 module.exports = {
-  getGames
+  getGames,
+  getOneGame
 }

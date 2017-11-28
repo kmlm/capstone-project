@@ -13,9 +13,18 @@ const onGameTracker = function () {
     .catch(ui.getGamesFailure)
 }
 
+const getOneGame = function () {
+  const div = $(this).closest('div')
+  const data = $(div).attr('data-id')
+    api.getOneGame(data)
+      .then(console.log)
+      .catch(console.error)
+}
+
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
-
+  $(document).on('click','.allGamesButton',getOneGame
+  )
 }
 
 
