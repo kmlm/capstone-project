@@ -1,9 +1,32 @@
 {{#each games as |game|}}
 <br>
   <div class="panel panel-info" data-id="{{game.id}}">
-      <div class="panel-heading">{{game.home}} vs. {{game.away}} - {{game.date}}</div>
-      <div class="panel-body">
-        {{game.events}}
+      <div class="panel-heading" >
+        <a id='allGamesButton' class="btn btn-primary" data-toggle="collapse" href="#collapseAllGames" aria-expanded="false" aria-controls="collapseAllGames">
+        {{game.home}} vs. {{game.away}} - {{game.date}}</a>
+</div>
+<div class="collapse" id='collapseAllGames'>
+      <div class="panel-body" >
+        <br>
+        <table class="table">
+          <h3> Game Events </h3>
+          <thead>
+              <td> Minute</td>
+              <td> Event Type</td>
+              <td> Player</td>
+          </thead>
+          <tbody>
+  {{#each game.events as |event|}}
+            <tr>
+                <td>{{event.minute}}</td>
+                <td>{{event.eventType}}</td>
+                <td>{{event.player}}</td>
+                <td>{{event.comment}}</td>
+            </tr>
+              {{/each}}
+            </tbody>
+        <br>
       </div>
     </div>
+  </div>
 {{/each}}

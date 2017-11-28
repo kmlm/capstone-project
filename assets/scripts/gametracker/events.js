@@ -8,10 +8,14 @@ const onGameTracker = function () {
   $('#GameTracker').show()
   $('#Dashboard').hide()
   $('#ChooseTeam').hide()
+  api.getGames()
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
 }
 
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
+
 }
 
 
