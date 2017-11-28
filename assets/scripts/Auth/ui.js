@@ -55,6 +55,11 @@ const signOutSuccess = function () {
   $('#GameTracker').hide()
   $('#Landing-Page-Signed-Out').show()
   $('#Signed-In-User-Email').text('')
+  $('#NextFixture').hide()
+  $('#Form').hide()
+  $('#Fixtures').hide()
+  $('#Top-Scorers').hide()
+  $('#League-Table').hide()
   store.user = null
   store.team = null
   console.log(store)
