@@ -1,5 +1,7 @@
 'use strict'
 
+const chooseTeamEvents = require('../chooseteam/events')
+
 const store = require('../store.js')
 
 const signUpSuccess = function (data) {
@@ -24,10 +26,12 @@ const signInSuccess = function (data) {
   $('.Signed-Out-Nav').hide()
   $('#login-modal-close').click()
   $('#Landing-Page-Signed-Out').hide()
+  store.team = store.user.favTeam
   if(store.user.favTeam === null) {
     $('#ChooseTeam').show()
   }
   else {
+    chooseTeamEvents.returningUser()
     $('#Dashboard').show()
   }
 }
