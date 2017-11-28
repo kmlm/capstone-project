@@ -4,6 +4,9 @@ const showOneGameTemplate = require('../templates/game-show.handlebars')
 
 const getGamesSuccess = function (games) {
   $('#GamesList').show()
+  $('#SaveGameButton').hide()
+  $('#ReturnFromNewGameButton').hide()
+  $('#NewGameButton').show()
   store.games = games.games
   console.log(store.games)
       const dateConvert = function (input) {

@@ -36,6 +36,9 @@ const onNewGame = function () {
   $('#NewGame').show()
   $('#GamesList').hide()
   $('#OneGame').hide()
+  $('#SaveGameButton').show()
+  $('#ReturnFromNewGameButton').show()
+  $('#NewGameButton').hide()
 }
 
 const gameTrackerHandlers = function () {
