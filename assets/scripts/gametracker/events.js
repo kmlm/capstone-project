@@ -32,8 +32,15 @@ const deleteGame = function () {
       .catch(ui.deleteGameFailure)
 }
 
+const onNewGame = function () {
+  $('#NewGame').show()
+  $('#GamesList').hide()
+  $('#OneGame').hide()
+}
+
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
+  $('#NewGameButton').on('click', onNewGame)
   $(document).on('click','.allGamesButton',getOneGame
   )
   $(document).on('click','.deleteGame',deleteGame
