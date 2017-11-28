@@ -8,6 +8,7 @@ const onGameTracker = function () {
   $('#GameTracker').show()
   $('#Dashboard').hide()
   $('#ChooseTeam').hide()
+  $('#OneGame').hide()
   api.getGames()
     .then(ui.getGamesSuccess)
     .catch(ui.getGamesFailure)
@@ -21,9 +22,23 @@ const getOneGame = function () {
       .catch(ui.getOneGameFailure)
 }
 
+const deleteGame = function () {
+  const div = $(this).closest('div')
+  const data = $(div).attr('data-id')
+    api.deleteGame(data)
+      .then(ui.deleteGameSuccess)
+      .then(api.getGames)
+      .then(ui.getGamesSuccess)
+      .catch(ui.deleteGameFailure)
+}
+
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
   $(document).on('click','.allGamesButton',getOneGame
+  )
+  $(document).on('click','.deleteGame',deleteGame
+  )
+  $(document).on('click','.backToAllGamesButtons',onGameTracker
   )
 }
 
