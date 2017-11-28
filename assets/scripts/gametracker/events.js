@@ -17,8 +17,8 @@ const getOneGame = function () {
   const div = $(this).closest('div')
   const data = $(div).attr('data-id')
     api.getOneGame(data)
-      .then(console.log)
-      .catch(console.error)
+      .then(ui.getOneGameSuccess)
+      .catch(ui.getOneGameFailure)
 }
 
 const gameTrackerHandlers = function () {

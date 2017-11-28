@@ -1,5 +1,6 @@
 const store = require('../store.js')
 const showGamesTemplate = require('../templates/game-index.handlebars')
+const showOneGameTemplate = require('../templates/game-show.handlebars')
 
 const getGamesSuccess = function (games) {
   store.games = games.games
@@ -23,7 +24,19 @@ const getGamesFailure = function () {
   console.error()
 }
 
+const getOneGameSuccess = function (game) {
+  $('#GamesList').hide()
+  const showGame = showOneGameTemplate({game: game.game})
+  $('#OneGame').html(showGame)
+}
+
+const getOneGameFailure = function () {
+  console.error()
+}
+
 module.exports = {
 getGamesSuccess,
-getGamesFailure
+getGamesFailure,
+getOneGameSuccess,
+getOneGameFailure
 }
