@@ -26,16 +26,16 @@ const getGamesFailure = function () {
 }
 
 const getOneGameSuccess = function (game) {
-
-const dateConvert = function (input) {
-  input.events.date.split('T')[0].split('-').reverse().join('-')
-  return input
-    }
-const convertedDate = dateConvert(game.game)
-  $('#GamesList').hide()
-  $('#OneGame').show()
-  const showGame = showOneGameTemplate({game: convertedDate})
-  $('#OneGame').html(showGame)
+    const dateConvert = function (input) {
+      let converted = input.date.split('T')[0].split('-').reverse().join('-')
+      return converted
+        }
+    const convertedDate = dateConvert(game.game)
+    game.game.date = convertedDate
+      $('#GamesList').hide()
+      $('#OneGame').show()
+      const showGame = showOneGameTemplate({game: game.game})
+      $('#OneGame').html(showGame)
 }
 
 const getOneGameFailure = function () {
