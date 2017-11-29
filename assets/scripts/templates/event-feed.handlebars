@@ -30,6 +30,7 @@
       <br>
       <table class="table">
         <thead>
+            <td> Minute </td>
             <td> Team</td>
             <td> Event Type</td>
             <td> Player</td>
@@ -37,6 +38,7 @@
         <tbody>
           {{#each events as |event|}}
           <tr data-id={{event.id}}>
+              <td>{{event.minute}}</td>
               <td>{{event.team}}</td>
               <td>{{event.eventType}}</td>
               <td>{{event.player}}</td>
