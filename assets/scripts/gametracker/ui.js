@@ -138,7 +138,7 @@ const editGameDetailsFailure = function ()
 }
 
 const newEventSuccess = function () {
-  document.getElementById('EditGameForm').reset()
+  document.getElementById('NewEventForm').reset()
   console.log('ui level',store.newGame.events)
   // const passThrough = {
   //   event: store.newEvent

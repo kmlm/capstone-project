@@ -12,7 +12,11 @@ const onGameTracker = function () {
   $('#NewGame').hide()
   $('#CurrentGameDetailsDiv').hide()
   $('#EventsForNewGame').hide()
+  $('#EventFeed').html('')
+  document.getElementById('NewEventForm').reset()
+  // $('#EventFeed').hide()
   store.newGame = null
+  store.newEvent = null
   api.getGames()
     .then(ui.getGamesSuccess)
     .catch(ui.getGamesFailure)
