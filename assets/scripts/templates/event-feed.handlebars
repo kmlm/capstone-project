@@ -1,3 +1,34 @@
+
+<div class="panel-body" >
+  <table class="table">
+    <thead>
+        <td> Minute </td>
+        <td> Team</td>
+        <td> Event Type</td>
+        <td> Player</td>
+    </thead>
+    <tbody>
+      {{#each events as |event|}}
+      <tr>
+        <div data-id="{{event.id}}">
+          <td>{{event.minute}}'</td>
+          <td>{{event.team}}</td>
+          <td>{{event.eventType}}</td>
+          <td>{{event.player}}</td>
+          <td>{{event.comment}}</td>
+          <td ><button  class='editEvent btn btn-info'> Edit Event</button></td>
+          <td ><button  class='deleteEvent btn btn-danger'> Delete Event</button></td>
+          </div>
+      </tr>
+      {{/each}}
+      </tbody>
+  <br>
+</div>
+</div>
+
+
+
+
 <!--
   <div class="panel panel-info" >
       <div class="panel-heading" >
@@ -25,30 +56,3 @@
         <br>
       </div>
     </div> -->
-
-    <div class="panel-body" >
-      <table class="table">
-        <thead>
-            <td> Minute </td>
-            <td> Team</td>
-            <td> Event Type</td>
-            <td> Player</td>
-        </thead>
-        <tbody>
-          {{#each events as |event|}}
-          <tr>
-            <div data-id="{{event.id}}">
-              <td>{{event.minute}}'</td>
-              <td>{{event.team}}</td>
-              <td>{{event.eventType}}</td>
-              <td>{{event.player}}</td>
-              <td>{{event.comment}}</td>
-              <td ><button  class='editEvent btn btn-info'> Edit Event</button></td>
-              <td ><button  class='deleteEvent btn btn-danger'> Delete Event</button></td>
-              </div>
-          </tr>
-          {{/each}}
-          </tbody>
-      <br>
-    </div>
-  </div>
