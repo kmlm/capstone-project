@@ -166,6 +166,7 @@ const onEditGameFromShowSuccess = function (data) {
   $('#NewGame').show()
   $('#NewGameForm').hide()
   $('#NewGameInputArea').hide()
+  $('#NewGameButton').hide()
    store.newGame = data.game
    console.log(store.newGame)
    $('#EventsForNewGame').show()
@@ -200,6 +201,7 @@ const onEditGameFromShowSuccess = function (data) {
 const onEditGameFromShowFailure = function () {
   console.error()
 }
+
 module.exports = {
   getGamesSuccess,
   getGamesFailure,
