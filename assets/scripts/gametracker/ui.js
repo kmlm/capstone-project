@@ -13,11 +13,17 @@ const getGamesSuccess = function (games) {
       const dateConvert = function (input) {
         for (let i=0; i<input.length; i++)
         {
-          store.games[i].date = input[i].date.split('T')[0].split('-').reverse().join('-')
+          let array = input[i].date.split('T')[0].split('-')
+            let fixedArray = []
+            fixedArray[0] = array[1]
+            fixedArray[1] = array[2]
+            fixedArray[2] = array[0]
+            let converted = fixedArray.join('-')
+            store.games[i].date = converted
         }
+          return store.games
       }
     dateConvert(store.games)
-    console.log(store.games)
       const showGames = showGamesTemplate({
         games: store.games
       })
@@ -31,8 +37,13 @@ const getGamesFailure = function () {
 
 const getOneGameSuccess = function (game) {
     const dateConvert = function (input) {
-      let converted = input.date.split('T')[0].split('-').reverse().join('-')
-      return converted
+      let array = input.date.split('T')[0].split('-')
+        let fixedArray = []
+        fixedArray[0] = array[1]
+        fixedArray[1] = array[2]
+        fixedArray[2] = array[0]
+        let converted = fixedArray.join('-')
+          return converted
         }
     const convertedDate = dateConvert(game.game)
     game.game.date = convertedDate

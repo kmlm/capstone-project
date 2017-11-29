@@ -50,7 +50,6 @@ const onCreateGame = function (event) {
     away:  document.getElementById('NewGameForm').elements.item(2).value,
     events: []
 }
-  console.log(store.newGame)
     api.createGame(store.newGame)
       .then(ui.createGameSuccess)
       .catch(ui.createGameFailure)
