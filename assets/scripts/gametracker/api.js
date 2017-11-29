@@ -63,12 +63,30 @@ const editGameDetails = function () {
   })
 }
 
-
+const newEvent = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.newGame.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game:
+        {
+          date: store.newGame.date,
+          home: store.newGame.home,
+          away: store.newGame.away,
+          events: store.newGame.events
+        }
+    }
+  })
+}
 
 module.exports = {
   getGames,
   getOneGame,
   deleteGame,
   createGame,
-  editGameDetails
+  editGameDetails,
+  newEvent
 }

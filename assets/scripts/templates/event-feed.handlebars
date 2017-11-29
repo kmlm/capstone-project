@@ -1,0 +1,50 @@
+<!--
+  <div class="panel panel-info" >
+      <div class="panel-heading" >
+        <a class="btn btn-primary" data-toggle="collapse" href=".collapseAllEvents" aria-expanded="false" aria-controls="collapseAllEvents">
+      {{event.event.minute}}'</a>
+      </div>
+</div>
+<div class="collapse collapseAllEvents" >
+      <div class="panel-body" data-id={{event.event.id}}>
+        <br>
+        <table class="table">
+          <thead>
+              <td> Team</td>
+              <td> Event Type</td>
+              <td> Player</td>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{event.event.team}}</td>
+                <td>{{event.event.eventType}}</td>
+                <td>{{event.event.player}}</td>
+                <td>{{event.event.comment}}</td>
+            </tr>
+            </tbody>
+        <br>
+      </div>
+    </div> -->
+
+    <div class="panel-body" >
+      <br>
+      <table class="table">
+        <thead>
+            <td> Team</td>
+            <td> Event Type</td>
+            <td> Player</td>
+        </thead>
+        <tbody>
+          {{#each events as |event|}}
+          <tr data-id={{event.id}}>
+              <td>{{event.team}}</td>
+              <td>{{event.eventType}}</td>
+              <td>{{event.player}}</td>
+              <td>{{event.comment}}</td>
+              <td><button class='editEvent btn btn-primary'> Edit Event</button></td>
+          </tr>
+          {{/each}}
+          </tbody>
+      <br>
+    </div>
+  </div>

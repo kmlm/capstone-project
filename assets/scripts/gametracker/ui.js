@@ -2,8 +2,9 @@ const store = require('../store.js')
 const showGamesTemplate = require('../templates/game-index.handlebars')
 const showOneGameTemplate = require('../templates/game-show.handlebars')
 const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
+const eventFeedTemplate = require('../templates/event-feed.handlebars')
 
-const getGamesSuccess = function(games) {
+const getGamesSuccess = function(games){
   $('#GamesList').show()
   $('#SaveGameButton').hide()
   $('#ReturnFromNewGameButton').hide()
@@ -135,6 +136,25 @@ const editGameDetailsFailure = function ()
 {
   console.error()
 }
+
+const newEventSuccess = function () {
+  document.getElementById('EditGameForm').reset()
+  console.log('ui level',store.newGame.events)
+  // const passThrough = {
+  //   event: store.newEvent
+  // }
+  // console.log(passThrough)
+  const showEventFeedTemplate = eventFeedTemplate({
+    events: store.newGame.events
+  })
+  $('#EventFeed').html(showEventFeedTemplate)
+}
+
+const newEventFailure = function ()
+{
+  console.error()
+}
+
 module.exports = {
   getGamesSuccess,
   getGamesFailure,
@@ -145,5 +165,7 @@ module.exports = {
   createGameSuccess,
   createGameFailure,
   editGameDetailsSuccess,
-  editGameDetailsFailure
+  editGameDetailsFailure,
+  newEventSuccess,
+  newEventFailure
 }
