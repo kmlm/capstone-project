@@ -14,7 +14,6 @@ const onGameTracker = function () {
   $('#EventsForNewGame').hide()
   $('#EventFeed').html('')
   document.getElementById('NewEventForm').reset()
-  // $('#EventFeed').hide()
   store.newGame = null
   store.newEvent = null
   api.getGames()
@@ -83,19 +82,43 @@ const editGameDetails = function () {
 const newEvent = function(event) {
   console.log(store.newGame)
   event.preventDefault()
-  store.newEvent = {
+  const newEvent = {
     minute: document.getElementById('NewEventForm').elements.item(0).value,
     team: document.getElementById('NewEventForm').elements.item(1).value,
     eventType: document.getElementById('NewEventForm').elements.item(2).value,
     player: document.getElementById('NewEventForm').elements.item(3).value,
     comment: document.getElementById('NewEventForm').elements.item(4).value
   }
-  store.newGame.events.push(store.newEvent)
+  store.newGame.events.push(newEvent)
   console.log(store.newGame)
   console.log(store.newGame.events)
   api.newEvent()
     .then(ui.newEventSuccess)
     .catch(ui.newEventFailure)
+}
+
+const deleteEvent = function (event) {
+  event.preventDefault()
+  console.log('pre',store.newGame)
+  const div = $(this).closest('div')
+  const id = $(div).attr('data-id')
+  console.log(div)
+  console.log(id)
+  // // const updatedEvents = store.newGame.events.filter((event) => event.id !== id)
+  // store.newGame.events = updatedEvents
+  // console.log('post', store.newGame)
+}
+
+const onEditGameFromShow = function () {
+  const div1 = $(this).closest('div')
+  const div2 = $(div1).closest('div')
+  const id = $(div2).attr('data-id')
+  api.getOneGame(id)
+    .then(ui.onEditGameFromShowSuccess)
+    // .then(onNewGame)
+    // .then(ui.editGameDetailsSuccess)
+    // .then(ui.newEventSuccess)
+    .catch(ui.onEditGameFromShowFailure)
 }
 
 const gameTrackerHandlers = function () {
@@ -104,6 +127,10 @@ const gameTrackerHandlers = function () {
   $('#NewGameForm').on('submit', onCreateGame)
   $('#EditGameForm').on('submit', editGameDetails)
   $('#NewEventForm').on('submit', newEvent)
+  $(document).on('click','.editEvent',deleteEvent
+  )
+  $(document).on('click','.editGameFromShow',onEditGameFromShow
+  )
   $(document).on('click','.allGamesButton',getOneGame
   )
   $(document).on('click','.deleteGame',deleteGame

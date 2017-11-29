@@ -37,13 +37,15 @@
         </thead>
         <tbody>
           {{#each events as |event|}}
-          <tr data-id={{event.id}}>
+          <tr>
+            <div data-id="{{event.id}}">
               <td>{{event.minute}}'</td>
               <td>{{event.team}}</td>
               <td>{{event.eventType}}</td>
               <td>{{event.player}}</td>
               <td>{{event.comment}}</td>
-              <td><button class='editEvent btn btn-primary'> Edit Event</button></td>
+              <td ><button  class='editEvent btn btn-primary'> Edit Event</button></td>
+              </div>
           </tr>
           {{/each}}
           </tbody>

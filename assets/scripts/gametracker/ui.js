@@ -140,10 +140,6 @@ const editGameDetailsFailure = function ()
 const newEventSuccess = function () {
   document.getElementById('NewEventForm').reset()
   console.log('ui level',store.newGame.events)
-  // const passThrough = {
-  //   event: store.newEvent
-  // }
-  // console.log(passThrough)
   const showEventFeedTemplate = eventFeedTemplate({
     events: store.newGame.events
   })
@@ -155,6 +151,55 @@ const newEventFailure = function ()
   console.error()
 }
 
+const deleteEventSuccess = function () {
+  console.log('ui success')
+}
+
+const deleteEventFailure = function () {
+  console.error()
+}
+
+const onEditGameFromShowSuccess = function (data) {
+  $('#GamesList').hide()
+  $('#OneGame').hide()
+  $('#ReturnFromNewGameButton').show()
+  $('#NewGame').show()
+  $('#NewGameForm').hide()
+  $('#NewGameInputArea').hide()
+   store.newGame = data.game
+   console.log(store.newGame)
+   $('#EventsForNewGame').show()
+   const dateConvert = function(input) {
+     const array = input.split('-')
+     const fixedArray = []
+     fixedArray[0] = array[1]
+     fixedArray[1] = array[2]
+     fixedArray[2] = array[0]
+     const converted = fixedArray.join('-')
+     return converted
+   }
+   const convertedDate = dateConvert(store.newGame.date)
+   store.newGame.date = convertedDate
+   store.newGame.id = data.game.id
+   const currentGameDetails = {
+     date: store.newGame.date,
+     home: store.newGame.home,
+     away: store.newGame.away
+   }
+   const showCurrentGameDetails = currentGameDetailsTemplate({
+     game: currentGameDetails
+   })
+   $('#CurrentGameDetailsDiv').show()
+   $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
+   const showEventFeedTemplate = eventFeedTemplate({
+     events: store.newGame.events
+   })
+   $('#EventFeed').html(showEventFeedTemplate)
+}
+
+const onEditGameFromShowFailure = function () {
+  console.error()
+}
 module.exports = {
   getGamesSuccess,
   getGamesFailure,
@@ -167,5 +212,9 @@ module.exports = {
   editGameDetailsSuccess,
   editGameDetailsFailure,
   newEventSuccess,
-  newEventFailure
+  newEventFailure,
+  deleteEventSuccess,
+  deleteEventFailure,
+  onEditGameFromShowSuccess,
+  onEditGameFromShowFailure
 }

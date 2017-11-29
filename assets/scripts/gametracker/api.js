@@ -73,9 +73,6 @@ const newEvent = function () {
     data: {
       game:
         {
-          date: store.newGame.date,
-          home: store.newGame.home,
-          away: store.newGame.away,
           events: store.newGame.events
         }
     }

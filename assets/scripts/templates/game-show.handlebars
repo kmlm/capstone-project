@@ -6,10 +6,11 @@
 </div>
 <div class="collapse" id='collapseAllGames'>
     <div data-id="{{game.id}}">
-      <h5> Actions: </h5>
+      <!-- <h5> Actions: </h5> -->
       <hr class='featurette-divider'>
       <button class="deleteGame btn btn-danger"> Delete Game </button>
       <button class='backToAllGamesButtons btn btn-primary'> Return to All Games</button>
+      <button class='editGameFromShow btn btn-info'> Edit Game</button>
     </div>
       <div class="panel-body" >
         <br>
@@ -29,6 +30,7 @@
                 <td>{{event.eventType}}</td>
                 <td>{{event.player}}</td>
                 <td>{{event.comment}}</td>
+
             </tr>
               {{/each}}
             </tbody>
