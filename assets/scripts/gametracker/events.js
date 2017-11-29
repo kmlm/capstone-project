@@ -17,7 +17,7 @@ const onGameTracker = function () {
 const getOneGame = function () {
   const div = $(this).closest('div')
   const data = $(div).attr('data-id')
-    api.getOneGame(data)
+  api.getOneGame(data)
       .then(ui.getOneGameSuccess)
       .catch(ui.getOneGameFailure)
 }
@@ -25,7 +25,7 @@ const getOneGame = function () {
 const deleteGame = function () {
   const div = $(this).closest('div')
   const data = $(div).attr('data-id')
-    api.deleteGame(data)
+  api.deleteGame(data)
       .then(ui.deleteGameSuccess)
       .then(api.getGames)
       .then(ui.getGamesSuccess)
@@ -45,12 +45,12 @@ const onCreateGame = function (event) {
   event.preventDefault()
   console.log('click worked')
   store.newGame = {
-    date:  document.getElementById('NewGameForm').elements.item(0).value,
+    date: document.getElementById('NewGameForm').elements.item(0).value,
     home: document.getElementById('NewGameForm').elements.item(1).value,
-    away:  document.getElementById('NewGameForm').elements.item(2).value,
+    away: document.getElementById('NewGameForm').elements.item(2).value,
     events: []
-}
-    api.createGame(store.newGame)
+  }
+  api.createGame(store.newGame)
       .then(ui.createGameSuccess)
       .catch(ui.createGameFailure)
 }
@@ -59,15 +59,13 @@ const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
   $('#NewGameButton').on('click', onNewGame)
   $('#NewGameForm').on('submit', onCreateGame)
-  $(document).on('click','.allGamesButton',getOneGame
+  $(document).on('click', '.allGamesButton', getOneGame
   )
-  $(document).on('click','.deleteGame',deleteGame
+  $(document).on('click', '.deleteGame', deleteGame
   )
-  $(document).on('click','.backToAllGamesButtons',onGameTracker
+  $(document).on('click', '.backToAllGamesButtons', onGameTracker
   )
 }
-
-
 
 module.exports = {
   gameTrackerHandlers

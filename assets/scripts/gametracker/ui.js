@@ -3,61 +3,61 @@ const showGamesTemplate = require('../templates/game-index.handlebars')
 const showOneGameTemplate = require('../templates/game-show.handlebars')
 const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
 
-const getGamesSuccess = function (games) {
+const getGamesSuccess = function(games) {
   $('#GamesList').show()
   $('#SaveGameButton').hide()
   $('#ReturnFromNewGameButton').hide()
   $('#NewGameButton').show()
   store.games = games.games
   console.log(store.games)
-      const dateConvert = function (input) {
-        for (let i=0; i<input.length; i++)
-        {
-          let array = input[i].date.split('T')[0].split('-')
-            let fixedArray = []
-            fixedArray[0] = array[1]
-            fixedArray[1] = array[2]
-            fixedArray[2] = array[0]
-            let converted = fixedArray.join('-')
-            store.games[i].date = converted
-        }
-          return store.games
-      }
-    dateConvert(store.games)
-      const showGames = showGamesTemplate({
-        games: store.games
-      })
-      $('#GamesList').html(showGames)
+  const dateConvert = function(input) {
+    for (let i = 0; i < input.length; i++) {
+      const array = input[i].date.split('T')[0].split('-')
+      const fixedArray = []
+      fixedArray[0] = array[1]
+      fixedArray[1] = array[2]
+      fixedArray[2] = array[0]
+      const converted = fixedArray.join('-')
+      store.games[i].date = converted
+    }
+    return store.games
+  }
+  dateConvert(store.games)
+  const showGames = showGamesTemplate({
+    games: store.games
+  })
+  $('#GamesList').html(showGames)
 }
 
-
-const getGamesFailure = function () {
+const getGamesFailure = function() {
   console.error()
 }
 
-const getOneGameSuccess = function (game) {
-    const dateConvert = function (input) {
-      let array = input.date.split('T')[0].split('-')
-        let fixedArray = []
-        fixedArray[0] = array[1]
-        fixedArray[1] = array[2]
-        fixedArray[2] = array[0]
-        let converted = fixedArray.join('-')
-          return converted
-        }
-    const convertedDate = dateConvert(game.game)
-    game.game.date = convertedDate
-      $('#GamesList').hide()
-      $('#OneGame').show()
-      const showGame = showOneGameTemplate({game: game.game})
-      $('#OneGame').html(showGame)
+const getOneGameSuccess = function(game) {
+  const dateConvert = function(input) {
+    const array = input.date.split('T')[0].split('-')
+    const fixedArray = []
+    fixedArray[0] = array[1]
+    fixedArray[1] = array[2]
+    fixedArray[2] = array[0]
+    const converted = fixedArray.join('-')
+    return converted
+  }
+  const convertedDate = dateConvert(game.game)
+  game.game.date = convertedDate
+  $('#GamesList').hide()
+  $('#OneGame').show()
+  const showGame = showOneGameTemplate({
+    game: game.game
+  })
+  $('#OneGame').html(showGame)
 }
 
-const getOneGameFailure = function () {
+const getOneGameFailure = function() {
   console.error()
 }
 
-const deleteGameSuccess = function () {
+const deleteGameSuccess = function() {
   $('#doc-message').text('Game Deleted Successfully')
   $('#OneGame').hide()
   // $('GamesList').show()
@@ -65,22 +65,22 @@ const deleteGameSuccess = function () {
   // console.log(store.games)
 }
 
-const deleteGameFailure = function () {
+const deleteGameFailure = function() {
   console.error()
 }
 
-const createGameSuccess = function () {
+const createGameSuccess = function() {
   $('#EventsForNewGame').show()
   $('#NewGameForm').hide()
-  const dateConvert = function (input) {
-    let array = input.split('-')
-    let fixedArray = []
+  const dateConvert = function(input) {
+    const array = input.split('-')
+    const fixedArray = []
     fixedArray[0] = array[1]
     fixedArray[1] = array[2]
     fixedArray[2] = array[0]
-    let converted = fixedArray.join('-')
+    const converted = fixedArray.join('-')
     return converted
-      }
+  }
   const convertedDate = dateConvert(store.newGame.date)
   store.newGame.date = convertedDate
   const currentGameDetails = {
@@ -94,17 +94,17 @@ const createGameSuccess = function () {
   $('#NewGameInputArea').html(showCurrentGameDetails)
 }
 
-const createGameFailure = function () {
+const createGameFailure = function() {
   console.error()
 }
 
 module.exports = {
-getGamesSuccess,
-getGamesFailure,
-getOneGameSuccess,
-getOneGameFailure,
-deleteGameSuccess,
-deleteGameFailure,
-createGameSuccess,
-createGameFailure
+  getGamesSuccess,
+  getGamesFailure,
+  getOneGameSuccess,
+  getOneGameFailure,
+  deleteGameSuccess,
+  deleteGameFailure,
+  createGameSuccess,
+  createGameFailure
 }

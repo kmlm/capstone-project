@@ -27,10 +27,9 @@ const signInSuccess = function (data) {
   $('#login-modal-close').click()
   $('#Landing-Page-Signed-Out').hide()
   store.team = store.user.favTeam
-  if(store.user.favTeam === null) {
+  if (store.user.favTeam === null) {
     $('#ChooseTeam').show()
-  }
-  else {
+  } else {
     chooseTeamEvents.returningUser()
     $('#Dashboard').show()
   }
