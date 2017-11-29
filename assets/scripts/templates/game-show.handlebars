@@ -17,6 +17,7 @@
           <h3> Game Events </h3>
           <thead>
               <td> Minute</td>
+              <td> Team</td>
               <td> Event Type</td>
               <td> Player</td>
           </thead>
@@ -24,6 +25,7 @@
   {{#each game.events as |event|}}
             <tr>
                 <td>{{event.minute}}</td>
+                <td>{{event.team}}</td>
                 <td>{{event.eventType}}</td>
                 <td>{{event.player}}</td>
                 <td>{{event.comment}}</td>

@@ -37,18 +37,17 @@ const getGamesFailure = function() {
 
 const getOneGameSuccess = function(game) {
   $('#NewGame').hide()
-  // $('#')
-  const dateConvert = function(input) {
-    const array = input.date.split('T')[0].split('-')
-    const fixedArray = []
-    fixedArray[0] = array[1]
-    fixedArray[1] = array[2]
-    fixedArray[2] = array[0]
-    const converted = fixedArray.join('-')
-    return converted
-  }
-  const convertedDate = dateConvert(game.game)
-  game.game.date = convertedDate
+  // const dateConvert = function(input) {
+  //   const array = input.date.split('T')[0].split('-')
+  //   const fixedArray = []
+  //   fixedArray[0] = array[1]
+  //   fixedArray[1] = array[2]
+  //   fixedArray[2] = array[0]
+  //   const converted = fixedArray.join('-')
+  //   return converted
+  // }
+  // const convertedDate = dateConvert(game.game)
+  // game.game.date = convertedDate
   $('#GamesList').hide()
   $('#OneGame').show()
   const showGame = showOneGameTemplate({
@@ -64,9 +63,6 @@ const getOneGameFailure = function() {
 const deleteGameSuccess = function() {
   $('#doc-message').text('Game Deleted Successfully')
   $('#OneGame').hide()
-  // $('GamesList').show()
-  // $('#game-tracker-nav').click()
-  // console.log(store.games)
 }
 
 const deleteGameFailure = function() {
