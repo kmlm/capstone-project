@@ -814,6 +814,43 @@
 
       <div id='EventsForNewGame'>
         <h4> Events</h4>
+
+          <hr class='featurette-divider'>
+
+        <div id='newEventInputDiv'>
+            <form id='NewEventForm' class='col-md-9'>
+              <div class="form-group">
+              <label for="EventMinute">Minute</label>
+              <input type="number" min='0' max='150' required class="form-control" id="EventMinute">
+              </div>
+              <div class="form-group">
+              <label for="EventTeam">Team</label>
+              <input type="text" required class="form-control" id="EventTeam">
+              </div>
+              <div class="form-group">
+                <label for="EventType">Event Type</label>
+                <select class="form-control" id="EventType" required >
+                  <option value="" disabled selected></option>
+                  <option>Goal</option>
+                  <option>Penalty</option>
+                  <option>Foul</option>
+                  <option>Yellow Card</option>
+                  <option>Red Card</option>
+                  <option>Save</option>
+                </select>
+              </div>
+              <div class="form-group">
+              <label for="EventPlayer">Player</label>
+              <input type="text" required class="form-control" id="EventPlayer">
+              </div>
+              <div class="form-group">
+              <label for="EventComment">Comments</label>
+              <textarea type="text" required class="form-control" id="EventComment"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Event</button>
+            </form>
+        </div>
+
       </div>
 
 </div>
