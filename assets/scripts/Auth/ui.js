@@ -60,6 +60,9 @@ const signOutSuccess = function () {
   $('#Top-Scorers').hide()
   $('#League-Table').hide()
   $('#EditGameForm').hide()
+  document.getElementById('EditGameForm').reset()
+  document.getElementById('NewGameForm').reset()
+  document.getElementById('NewEventForm').reset()
   store.user = null
   store.team = null
   store.newGame = null

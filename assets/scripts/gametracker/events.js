@@ -14,6 +14,8 @@ const onGameTracker = function () {
   $('#EventsForNewGame').hide()
   $('#EventFeed').html('')
   document.getElementById('NewEventForm').reset()
+  $('#EditGameForm').hide()
+  document.getElementById('EditGameForm').reset()
   store.newGame = null
   store.newEvent = null
   api.getGames()
