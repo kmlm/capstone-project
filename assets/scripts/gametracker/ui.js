@@ -10,21 +10,23 @@ const getGamesSuccess = function(games) {
   $('#NewGameButton').show()
   store.games = games.games
   console.log(store.games)
-  const dateConvert = function(input) {
-    for (let i = 0; i < input.length; i++) {
-      const array = input[i].date.split('T')[0].split('-')
-      const fixedArray = []
-      fixedArray[0] = array[1]
-      fixedArray[1] = array[2]
-      fixedArray[2] = array[0]
-      const converted = fixedArray.join('-')
-      store.games[i].date = converted
-    }
-    return store.games
-  }
-  dateConvert(store.games)
+  // const dateConvert = function (input) {
+  //   for (let i = 0; i < input.length; i++) {
+  //     const array = input[i].date.split('T')[0].split('-')
+  //     const fixedArray = []
+  //     fixedArray[0] = array[1]
+  //     fixedArray[1] = array[2]
+  //     fixedArray[2] = array[0]
+  //     const converted = fixedArray.join('-')
+  //     store.games[i].date = converted
+  //   }
+  //   return store.games
+  // }
+  // dateConvert(store.games)
+  const userGames = store.games.filter( (game) => game._owner === store.user.id )
+  console.log(userGames)
   const showGames = showGamesTemplate({
-    games: store.games
+    games: userGames
   })
   $('#GamesList').html(showGames)
 }
