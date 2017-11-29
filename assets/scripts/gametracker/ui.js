@@ -34,6 +34,8 @@ const getGamesFailure = function() {
 }
 
 const getOneGameSuccess = function(game) {
+  $('#NewGame').hide()
+  // $('#')
   const dateConvert = function(input) {
     const array = input.date.split('T')[0].split('-')
     const fixedArray = []
@@ -91,7 +93,9 @@ const createGameSuccess = function() {
   const showCurrentGameDetails = currentGameDetailsTemplate({
     game: currentGameDetails
   })
-  $('#NewGameInputArea').html(showCurrentGameDetails)
+  $('#NewGameInputArea').hide()
+  $('#CurrentGameDetailsDiv').show()
+  $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
 }
 
 const createGameFailure = function() {

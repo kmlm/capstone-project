@@ -61,6 +61,8 @@ const signOutSuccess = function () {
   $('#League-Table').hide()
   store.user = null
   store.team = null
+  store.newGame = null
+  store.games = null
   console.log(store)
   console.log('sign out successful')
 }
