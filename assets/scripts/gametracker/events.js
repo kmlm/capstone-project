@@ -33,7 +33,7 @@ const deleteGame = function () {
 }
 
 const onNewGame = function () {
-  $('#NewGame').show()
+  $('#NewGameInputArea').show()
   $('#GamesList').hide()
   $('#OneGame').hide()
   $('#SaveGameButton').show()
@@ -41,9 +41,25 @@ const onNewGame = function () {
   $('#NewGameButton').hide()
 }
 
+const onCreateGame = function (event) {
+  event.preventDefault()
+  console.log('click worked')
+  store.newGame = {
+    date:  document.getElementById('NewGameForm').elements.item(0).value,
+    home: document.getElementById('NewGameForm').elements.item(1).value,
+    away:  document.getElementById('NewGameForm').elements.item(2).value,
+    events: []
+}
+  console.log(store.newGame)
+    api.createGame(store.newGame)
+      .then(console.log)
+      .catch(console.error)
+}
+
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
   $('#NewGameButton').on('click', onNewGame)
+  $('#NewGameForm').on('submit', onCreateGame)
   $(document).on('click','.allGamesButton',getOneGame
   )
   $(document).on('click','.deleteGame',deleteGame
