@@ -1,6 +1,7 @@
 const store = require('../store.js')
 const showGamesTemplate = require('../templates/game-index.handlebars')
 const showOneGameTemplate = require('../templates/game-show.handlebars')
+const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
 
 const getGamesSuccess = function (games) {
   $('#GamesList').show()
@@ -56,11 +57,43 @@ const deleteGameSuccess = function () {
 const deleteGameFailure = function () {
   console.error()
 }
+
+const createGameSuccess = function () {
+  $('#EventsForNewGame').show()
+  $('#NewGameForm').hide()
+  const dateConvert = function (input) {
+    let array = input.split('-')
+    let fixedArray = []
+    fixedArray[0] = array[1]
+    fixedArray[1] = array[2]
+    fixedArray[2] = array[0]
+    let converted = fixedArray.join('-')
+    return converted
+      }
+  const convertedDate = dateConvert(store.newGame.date)
+  store.newGame.date = convertedDate
+  const currentGameDetails = {
+    date: store.newGame.date,
+    home: store.newGame.home,
+    away: store.newGame.away
+  }
+  const showCurrentGameDetails = currentGameDetailsTemplate({
+    game: currentGameDetails
+  })
+  $('#NewGameInputArea').html(showCurrentGameDetails)
+}
+
+const createGameFailure = function () {
+  console.error()
+}
+
 module.exports = {
 getGamesSuccess,
 getGamesFailure,
 getOneGameSuccess,
 getOneGameFailure,
 deleteGameSuccess,
-deleteGameFailure
+deleteGameFailure,
+createGameSuccess,
+createGameFailure
 }

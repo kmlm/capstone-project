@@ -52,8 +52,8 @@ const onCreateGame = function (event) {
 }
   console.log(store.newGame)
     api.createGame(store.newGame)
-      .then(console.log)
-      .catch(console.error)
+      .then(ui.createGameSuccess)
+      .catch(ui.createGameFailure)
 }
 
 const gameTrackerHandlers = function () {
