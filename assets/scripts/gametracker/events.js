@@ -109,15 +109,24 @@ const deleteEvent = function (event) {
   // console.log('post', store.newGame)
 }
 
+const editEvent = function (event) {
+  event.preventDefault()
+  console.log('pre',store.newGame)
+  const div = $(this).closest('div')
+  const id = $(div).attr('data-id')
+  console.log(div)
+  console.log(id)
+  // // const updatedEvents = store.newGame.events.filter((event) => event.id !== id)
+  // store.newGame.events = updatedEvents
+  // console.log('post', store.newGame)
+}
+
 const onEditGameFromShow = function () {
   const div1 = $(this).closest('div')
   const div2 = $(div1).closest('div')
   const id = $(div2).attr('data-id')
   api.getOneGame(id)
     .then(ui.onEditGameFromShowSuccess)
-    // .then(onNewGame)
-    // .then(ui.editGameDetailsSuccess)
-    // .then(ui.newEventSuccess)
     .catch(ui.onEditGameFromShowFailure)
 }
 
@@ -127,7 +136,9 @@ const gameTrackerHandlers = function () {
   $('#NewGameForm').on('submit', onCreateGame)
   $('#EditGameForm').on('submit', editGameDetails)
   $('#NewEventForm').on('submit', newEvent)
-  $(document).on('click','.editEvent',deleteEvent
+  $(document).on('click','.deleteEvent',deleteEvent
+  )
+  $(document).on('click','.editEvent', editEvent
   )
   $(document).on('click','.editGameFromShow',onEditGameFromShow
   )
