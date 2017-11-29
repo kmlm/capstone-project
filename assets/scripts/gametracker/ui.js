@@ -69,8 +69,10 @@ const deleteGameFailure = function() {
   console.error()
 }
 
-const createGameSuccess = function() {
+const createGameSuccess = function(data) {
+  console.log(data)
   $('#EventsForNewGame').show()
+  document.getElementById('NewGameForm').reset()
   $('#NewGameForm').hide()
   const dateConvert = function(input) {
     const array = input.split('-')
@@ -83,6 +85,7 @@ const createGameSuccess = function() {
   }
   const convertedDate = dateConvert(store.newGame.date)
   store.newGame.date = convertedDate
+  store.newGame.id = data.game.id
   const currentGameDetails = {
     date: store.newGame.date,
     home: store.newGame.home,
@@ -100,6 +103,38 @@ const createGameFailure = function() {
   console.error()
 }
 
+const editGameDetailsSuccess = function (){
+  const dateConvert = function(input) {
+    const array = input.split('-')
+    const fixedArray = []
+    fixedArray[0] = array[1]
+    fixedArray[1] = array[2]
+    fixedArray[2] = array[0]
+    const converted = fixedArray.join('-')
+    return converted
+  }
+  const convertedDate = dateConvert(store.newGame.date)
+  store.newGame.date = convertedDate
+  const currentGameDetails = {
+    date: store.newGame.date,
+    home: store.newGame.home,
+    away: store.newGame.away
+  }
+  const showCurrentGameDetails =
+  currentGameDetailsTemplate({
+    game: currentGameDetails
+  })
+  $('#EditGameForm').hide()
+  document.getElementById('EditGameForm').reset()
+  $('#NewGameInputArea').hide()
+  $('#CurrentGameDetailsDiv').show()
+  $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
+}
+
+const editGameDetailsFailure = function ()
+{
+  console.error()
+}
 module.exports = {
   getGamesSuccess,
   getGamesFailure,
@@ -108,5 +143,7 @@ module.exports = {
   deleteGameSuccess,
   deleteGameFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  editGameDetailsSuccess,
+  editGameDetailsFailure
 }

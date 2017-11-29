@@ -11,6 +11,7 @@ const onGameTracker = function () {
   $('#OneGame').hide()
   $('#NewGame').hide()
   $('#CurrentGameDetailsDiv').hide()
+  $('#EventsForNewGame').hide()
   store.newGame = null
   api.getGames()
     .then(ui.getGamesSuccess)
@@ -60,10 +61,30 @@ const onCreateGame = function (event) {
       .catch(ui.createGameFailure)
 }
 
+const onEditCurrentGameDetails = function () {
+  $('#CurrentGameDetailsDiv').hide()
+  $('#NewGameInputArea').show()
+  $('#EditGameForm').show()
+  // document.getElementById('NewGameForm').elements.item(0).value = store.newGame.date
+  // document.getElementById('NewGameForm').elements.item(1).value = store.newGame.home
+  // document.getElementById('NewGameForm').elements.item(2).value = store.newGame.away
+}
+
+const editGameDetails = function () {
+    store.newGame.date = document.getElementById('EditGameForm').elements.item(0).value
+    store.newGame.home =  document.getElementById('EditGameForm').elements.item(1).value
+    store.newGame.away = document.getElementById('EditGameForm').elements.item(2).value
+    api.editGameDetails()
+      .then(ui.editGameDetailsSuccess)
+      .catch(ui.editGameDetailsFailure)
+  }
+
+
 const gameTrackerHandlers = function () {
   $('#game-tracker-nav').on('click', onGameTracker)
   $('#NewGameButton').on('click', onNewGame)
   $('#NewGameForm').on('submit', onCreateGame)
+  $('#EditGameForm').on('submit', editGameDetails)
   $(document).on('click','.allGamesButton',getOneGame
   )
   $(document).on('click','.deleteGame',deleteGame
@@ -71,6 +92,8 @@ const gameTrackerHandlers = function () {
   $(document).on('click','.backToAllGamesButtons',onGameTracker
   )
   $(document).on('click','#ReturnFromNewGameButton',onGameTracker)
+  $(document).on('click','#EditCurrentGameDetailsButton',onEditCurrentGameDetails)
+
 }
 
 
