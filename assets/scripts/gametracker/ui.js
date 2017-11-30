@@ -108,6 +108,7 @@ const createGameSuccess = function(data) {
   $('#NewGameInputArea').hide()
   $('#CurrentGameDetailsDiv').show()
   $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
+  $('#EventFeed').html("<div class ='container'><h3> Your events will display here</h3></div>")
 }
 
 const createGameFailure = function() {
