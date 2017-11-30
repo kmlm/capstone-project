@@ -72,6 +72,13 @@ const onEditCurrentGameDetails = function () {
   $('#EditGameForm').show()
 }
 
+const onCancelEditGameDetails = function () {
+  $('#CurrentGameDetailsDiv').show()
+  $('#NewGameInputArea').hide()
+  $('#EditGameForm').hide()
+  document.getElementById('EditGameForm').reset()
+}
+
 const editGameDetails = function () {
     store.newGame.date = document.getElementById('EditGameForm').elements.item(0).value
     store.newGame.home =  document.getElementById('EditGameForm').elements.item(1).value
@@ -137,6 +144,7 @@ const gameTrackerHandlers = function () {
   $('#NewGameButton').on('click', onNewGame)
   $('#NewGameForm').on('submit', onCreateGame)
   $('#EditGameForm').on('submit', editGameDetails)
+  $('#CancelEditGameDetails').on('click', onCancelEditGameDetails)
   $('#NewEventForm').on('submit', newEvent)
   $(document).on('click','.deleteEvent',deleteEvent
   )
