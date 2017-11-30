@@ -1,0 +1,21 @@
+<div class ='container'>
+  <div class="panel panel-info" >
+      <div class="panel-heading" >
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseAllGames" aria-expanded="false" aria-controls="collapseAllGames">
+        {{game.home}} vs. {{game.away}} - {{game.date}}</a>
+      </div>
+</div>
+<div class="collapse" id='collapseAllGames'>
+    <div data-id="{{game.id}}">
+      <!-- <h5> Actions: </h5> -->
+      <hr class='featurette-divider'>
+      <button data-target="#deleteGameModal" data-toggle="modal" class="deleteGame btn btn-danger"> Delete Game </button>
+      <button class='backToAllGamesButtons btn btn-primary'> Return to All Games</button>
+      <button class='editGameFromShow btn btn-info'> Edit Game</button>
+    </div>
+      <div class="panel-body" >
+        <br>
+        <h3> You have no events recorded for this game </h3>
+      </div>
+    </div>
+  </div>

@@ -3,6 +3,7 @@ const showGamesTemplate = require('../templates/game-index.handlebars')
 const showOneGameTemplate = require('../templates/game-show.handlebars')
 const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
 const eventFeedTemplate = require('../templates/event-feed.handlebars')
+const noEventsTemplate = require('../templates/no-events.handlebars')
 const api = require('./api')
 
 const getGamesSuccess = function(games){
@@ -56,7 +57,14 @@ const getOneGameSuccess = function(game) {
   const showGame = showOneGameTemplate({
     game: game.game
   })
+  const showNoEvents = noEventsTemplate({
+    game: game.game
+  })
+  if ( game.game.events.length === 0) {
+    $('#OneGame').html(showNoEvents)
+  } else {
   $('#OneGame').html(showGame)
+  }
 }
 
 const getOneGameFailure = function() {
@@ -199,7 +207,10 @@ const onEditGameFromShowSuccess = function (data) {
    const showEventFeedTemplate = eventFeedTemplate({
      events: store.newGame.events
    })
-   $('#EventFeed').html(showEventFeedTemplate)
+   if (store.newGame.events.length === 0){
+     $('#EventFeed').html("<div class ='container'><h3> You have no events recorded for this game</h3></div>")
+   } else {   $('#EventFeed').html(showEventFeedTemplate)
+ }
 }
 
 const onEditGameFromShowFailure = function () {
