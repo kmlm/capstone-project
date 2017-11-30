@@ -114,17 +114,19 @@ const newEvent = function(event) {
 
 const onDeleteEvent = function (event) {
   event.preventDefault()
-  console.log('pre',store.newGame)
+  console.log('pre', store.newGame)
   const div = $(this).parents()[1]
   const id = $(div).attr('data-id')
   store.deleteEventId = id
   console.log(store.deleteEventId)
+  const filtered = store.newGame.events.filter((event) => event.id !== store.deleteEventId)
+  store.newGame.events = filtered
+  console.log('post filter  store.newGame.events', store.newGame.events)
 }
 
 const deleteEvent = function (event){
   event.preventDefault()
-  const filtered = store.newGame.events.filter((event) => event.id !== store.deleteEventId)
-  store.newGame.events = filtered
+    console.log('prior to api store.newGame.events', store.newGame.events)
     api.newEvent()
       .then(ui.newEventSuccess)
       .catch(ui.newEventFailure)

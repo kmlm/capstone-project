@@ -64,6 +64,7 @@ const editGameDetails = function () {
 }
 
 const newEvent = function () {
+  console.log ('newGame.events is', store.newGame.events)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.newGame.id,
     method: 'PATCH',
