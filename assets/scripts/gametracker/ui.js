@@ -3,6 +3,7 @@ const showGamesTemplate = require('../templates/game-index.handlebars')
 const showOneGameTemplate = require('../templates/game-show.handlebars')
 const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
 const eventFeedTemplate = require('../templates/event-feed.handlebars')
+const api = require('./api')
 
 const getGamesSuccess = function(games){
   $('#GamesList').show()
@@ -169,6 +170,7 @@ const onEditGameFromShowSuccess = function (data) {
   $('#NewGameForm').hide()
   $('#NewGameInputArea').hide()
   $('#NewGameButton').hide()
+  document.getElementById('NewEventForm').reset()
    store.newGame = data.game
    console.log(store.newGame)
    $('#EventsForNewGame').show()

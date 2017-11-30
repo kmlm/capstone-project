@@ -107,7 +107,8 @@ const newEvent = function(event) {
   console.log(store.newGame)
   console.log(store.newGame.events)
   api.newEvent()
-    .then(ui.newEventSuccess)
+    .then(() => api.getOneGame(store.newGame.id))
+    .then(ui.onEditGameFromShowSuccess)
     .catch(ui.newEventFailure)
 }
 
