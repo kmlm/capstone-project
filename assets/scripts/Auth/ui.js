@@ -77,7 +77,7 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function () {
-  console.log('sign out failed')
+  $('#doc-message').text('Sign Out has Failed')
 }
 
 const changePasswordSuccess = function () {

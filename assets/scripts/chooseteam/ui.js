@@ -11,6 +11,7 @@ const chooseTeamSuccess = function () {
 
 const chooseTeamFailure = function () {
   console.log('choose team ui failure')
+  $('#document').text('Unable to Choose Teams at this Time')
 }
 
 module.exports = {

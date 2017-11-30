@@ -36,7 +36,7 @@ const getGamesSuccess = function(games){
 }
 
 const getGamesFailure = function() {
-  console.error()
+  $('#doc-message').text('Unable to get your games at this time')
 }
 
 const getOneGameSuccess = function(game) {
@@ -68,7 +68,7 @@ const getOneGameSuccess = function(game) {
 }
 
 const getOneGameFailure = function() {
-  console.error()
+  $('#doc-message').text('Failed to Load Game')
 }
 
 const deleteGameSuccess = function() {
@@ -77,7 +77,7 @@ const deleteGameSuccess = function() {
 }
 
 const deleteGameFailure = function() {
-  console.error()
+  $('#doc-message').text('Failed to Delete Game')
 }
 
 const createGameSuccess = function(data) {
@@ -112,7 +112,7 @@ const createGameSuccess = function(data) {
 }
 
 const createGameFailure = function() {
-  console.error()
+  $('#doc-message').text('Unable to Create a New Game at this time')
 }
 
 const editGameDetailsSuccess = function (){
@@ -145,7 +145,7 @@ const editGameDetailsSuccess = function (){
 
 const editGameDetailsFailure = function ()
 {
-  console.error()
+  $('#doc-message').text('Edit Details Failure')
 }
 
 const newEventSuccess = function () {
@@ -160,15 +160,15 @@ const newEventSuccess = function () {
 
 const newEventFailure = function ()
 {
-  console.error()
+  $('#doc-message').text('Failed to Delete Event')
 }
 
 const deleteEventSuccess = function () {
-  console.log('ui success')
+  $('#doc-message').text('Event Deleted Successfully')
 }
 
 const deleteEventFailure = function () {
-  console.error()
+  $('#doc-message').text('Failed to Delete Event')
 }
 
 const onEditGameFromShowSuccess = function (data) {
@@ -215,7 +215,7 @@ const onEditGameFromShowSuccess = function (data) {
 }
 
 const onEditGameFromShowFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Edit This Game')
 }
 
 module.exports = {
