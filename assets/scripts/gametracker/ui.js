@@ -141,6 +141,7 @@ const editGameDetailsFailure = function ()
 const newEventSuccess = function () {
   document.getElementById('NewEventForm').reset()
   console.log('ui level',store.newGame.events)
+  store.deleteEventId = null
   const showEventFeedTemplate = eventFeedTemplate({
     events: store.newGame.events
   })

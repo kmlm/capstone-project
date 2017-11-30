@@ -71,6 +71,7 @@ const signOutSuccess = function () {
   store.newGame = null
   store.games = null
   store.deleteGameId = null
+  store.deleteEventId = null
   console.log(store)
   console.log('sign out successful')
 }

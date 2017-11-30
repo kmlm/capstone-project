@@ -15,8 +15,7 @@
           <td>{{event.eventType}}</td>
           <td>{{event.player}}</td>
           <td>{{event.comment}}</td>
-          <td ><button  class='editEvent btn btn-info'> Edit Event</button><button  class='deleteEvent btn btn-danger'> Delete Event</button></td>
-          <!-- <td ></td> -->
+          <td ><button  class='editEvent btn btn-info'> Edit Event</button><button  class='deleteEvent btn btn-danger' data-target='#deleteEventModal' data-toggle="modal"> Delete Event</button></td>
       </tr>
       {{/each}}
       </tbody>
