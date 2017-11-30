@@ -70,6 +70,7 @@ const signOutSuccess = function () {
   store.team = null
   store.newGame = null
   store.games = null
+  store.deleteGameId = null
   console.log(store)
   console.log('sign out successful')
 }

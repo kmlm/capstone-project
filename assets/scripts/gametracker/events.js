@@ -31,10 +31,15 @@ const getOneGame = function () {
       .catch(ui.getOneGameFailure)
 }
 
-const deleteGame = function () {
+const onDeleteGame = function () {
   const div = $(this).closest('div')
   const data = $(div).attr('data-id')
-    api.deleteGame(data)
+  store.deleteGameId = data
+}
+
+const deleteGame = function (event) {
+  event.preventDefault()
+    api.deleteGame(store.deleteGameId)
       .then(ui.deleteGameSuccess)
       .then(api.getGames)
       .then(ui.getGamesSuccess)
@@ -154,8 +159,9 @@ const gameTrackerHandlers = function () {
   )
   $(document).on('click','.allGamesButton',getOneGame
   )
-  $(document).on('click','.deleteGame',deleteGame
+  $(document).on('click','.deleteGame',onDeleteGame
   )
+  $(document).on('click','.yesDeleteGame', deleteGame)
   $(document).on('click','.backToAllGamesButtons',onGameTracker
   )
   $(document).on('click','#ReturnFromNewGameButton',onGameTracker)
