@@ -18,6 +18,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (data) {
   store.user = data.user
+  console.log(store.user)
   const user = store.user.email
   $('#Signed-In-User-Email').text(user)
   console.log('signInWorked')
@@ -27,7 +28,7 @@ const signInSuccess = function (data) {
   $('#login-modal-close').click()
   $('#Landing-Page-Signed-Out').hide()
   store.team = store.user.favTeam
-  if (store.user.favTeam === null) {
+  if (store.user.favTeam === null || store.user.favTeam  === '') {
     $('#ChooseTeam').show()
   } else {
     chooseTeamEvents.returningUser()

@@ -31,6 +31,7 @@ const onChangeTeam = function () {
   $('#TeamName').html('')
   $('#ChooseTeam').show()
   store.team = null
+  api.chooseTeam(store.team)
 }
 
 const returningUser = function () {
