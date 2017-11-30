@@ -4,6 +4,7 @@ const chooseTeamSuccess = function () {
   console.log('ui runs')
   $('#ChooseTeam').hide()
   $('#Dashboard').show()
+  $('#TeamName').html(store.team)
   $('#GameTracker').hide()
   console.log()
 }

@@ -28,6 +28,7 @@ const onChooseTeam = function (event) {
 const onChangeTeam = function () {
   $('#added-fixture').remove()
   $('#Dashboard').hide()
+  $('#TeamName').html('')
   $('#ChooseTeam').show()
   store.team = null
 }

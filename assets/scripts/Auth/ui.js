@@ -32,6 +32,7 @@ const signInSuccess = function (data) {
   } else {
     chooseTeamEvents.returningUser()
     $('#Dashboard').show()
+    $('#TeamName').html(store.team)
   }
 }
 
@@ -60,6 +61,7 @@ const signOutSuccess = function () {
   $('#Top-Scorers').hide()
   $('#League-Table').hide()
   $('#EditGameForm').hide()
+  $('#TeamName').html('')
   document.getElementById('EditGameForm').reset()
   document.getElementById('NewGameForm').reset()
   document.getElementById('NewEventForm').reset()
