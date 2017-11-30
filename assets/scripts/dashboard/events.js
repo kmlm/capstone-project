@@ -8,7 +8,7 @@ const populateDashboard = function (data) {
 }
 
 const myDashboard = function () {
-  if (store.team !== undefined && store.team !== null) {
+  if (store.team !== undefined && store.team !== null && store.team !== '') {
     $('#Dashboard').show()
     $('#TeamName').html(store.team)
     $('#GameTracker').hide()
