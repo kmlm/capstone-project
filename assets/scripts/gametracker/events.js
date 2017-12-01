@@ -131,18 +131,18 @@ const deleteEvent = function (event){
       .then(ui.newEventSuccess)
       .catch(ui.newEventFailure)
 }
-
-const editEvent = function (event) {
-  event.preventDefault()
-  console.log('pre',store.newGame)
-  const div = $(this).closest('div')
-  const id = $(div).attr('data-id')
-  console.log(div)
-  console.log(id)
-  // // const updatedEvents = store.newGame.events.filter((event) => event.id !== id)
-  // store.newGame.events = updatedEvents
-  // console.log('post', store.newGame)
-}
+//
+// const editEvent = function (event) {
+//   event.preventDefault()
+//   console.log('pre',store.newGame)
+//   const div = $(this).closest('div')
+//   const id = $(div).attr('data-id')
+//   console.log(div)
+//   console.log(id)
+//   // // const updatedEvents = store.newGame.events.filter((event) => event.id !== id)
+//   // store.newGame.events = updatedEvents
+//   // console.log('post', store.newGame)
+// }
 
 const onEditGameFromShow = function () {
   const div1 = $(this).closest('div')
@@ -164,8 +164,8 @@ const gameTrackerHandlers = function () {
   )
   $(document).on('click','.yesDeleteEvent', deleteEvent
   )
-  $(document).on('click','.editEvent', editEvent
-  )
+  // $(document).on('click','.editEvent', editEvent
+  // )
   $(document).on('click','.editGameFromShow',onEditGameFromShow
   )
   $(document).on('click','.allGamesButton',getOneGame
