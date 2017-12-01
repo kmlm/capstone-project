@@ -34,7 +34,7 @@ const getGamesSuccess = function (games) {
 }
 
 const getGamesFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Retrieve Games at this time')
 }
 
 const getOneGameSuccess = function (game) {
@@ -66,7 +66,7 @@ const getOneGameSuccess = function (game) {
 }
 
 const getOneGameFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Retrieve Game at this Time')
 }
 
 const deleteGameSuccess = function () {
@@ -75,7 +75,7 @@ const deleteGameSuccess = function () {
 }
 
 const deleteGameFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Delete Game')
 }
 
 const createGameSuccess = function (data) {
@@ -109,7 +109,7 @@ const createGameSuccess = function (data) {
 }
 
 const createGameFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Create Game')
 }
 
 const editGameDetailsSuccess = function () {
@@ -141,7 +141,7 @@ const editGameDetailsSuccess = function () {
 }
 
 const editGameDetailsFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Edit Game')
 }
 
 const newEventSuccess = function () {
@@ -154,7 +154,7 @@ const newEventSuccess = function () {
 }
 
 const newEventFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Create New Event')
 }
 
 // const deleteEventSuccess = function () {
@@ -209,7 +209,7 @@ const onEditGameFromShowSuccess = function (data) {
 }
 
 const onEditGameFromShowFailure = function () {
-  console.error()
+  $('#doc-message').text('Unable to Edit Game')
 }
 
 module.exports = {
