@@ -9,12 +9,14 @@ The deployed application is available at: https://kmlm.github.io/capstone-projec
 
 The repository for the application's API is: https://github.com/kmlm/capstone-express-api
 
+The deployed API is available at: https://hidden-beyond-66396.herokuapp.com/
+
 
 ![App Screen](https://i.imgur.com/YOyUenF.jpg)
 
 ## Technologies Used
 
-This is a Single Page application using HTML, javascript, and handlebars used. Ajax requests were made for API calls.
+This is a Single Page application using HTML, javascript, and handlebars. Ajax requests were made for API requests.
 
 
 ## User Stories
@@ -37,5 +39,11 @@ There are some features that will be added in the future. These include the abil
 
 ## Problem Solving Process
 
+I tried to be methodical in the way I approached the application. I started by creating the HTML for the navbar, modals, dashboard, and GameTracker features. 
+
 
 ## Wireframes
+
+Landing Page: https://i.imgur.com/Yfz7BZP.jpg
+Dashboard: https://i.imgur.com/DnxdaFn.jpg
+GameTracker: https://i.imgur.com/HAPZpxT.jpg
