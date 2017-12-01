@@ -9,7 +9,8 @@ The deployed application is available at: https://kmlm.github.io/capstone-projec
 
 The repository for the application's API is: https://github.com/kmlm/capstone-express-api
 
-(https://i.imgur.com/YOyUenF.jpg)
+
+[![App Screen](https://i.imgur.com/YOyUenF.jpg]
 
 ## Technologies Used
 
@@ -25,7 +26,7 @@ This is a Single Page application using HTML, javascript, and handlebars used. A
 - As user can change their favorite team at any time and it will be sent as a patch request
 - The user will be able to decide what options they want to display on their dashboard including upcoming fixtures, league standings, and current squad
 - Aside from viewing the dashboard and adjusting what is displaying, the user will be able to use the game tracker feature.
-- GameTracker allows a user to create a game (game resource) that they are watching and then adding key events in the game. These events will include the minute the event happened and then the description of the event which could be: goals, shots, tackles, fouls, and cards.
+- GameTracker allows a user to create a game that they are watching and then adding key events in the game. These events will include the minute the event happened and then the description of the event which could be: goals, shots, tackles, fouls, and cards.
 - After the game is completed the game will be posted to the db and the user will be able to pull back any games.
 - The user will be able to see all past games they have tracked.
 
