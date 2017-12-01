@@ -114,23 +114,23 @@ const newEvent = function(event) {
     .catch(ui.newEventFailure)
 }
 
-const onDeleteEvent = function (event) {
-  event.preventDefault()
-  console.log('pre',store.newGame)
-  const div = $(this).parents()[1]
-  const id = $(div).attr('data-id')
-  store.deleteEventId = id
-  console.log(store.deleteEventId)
-}
-
-const deleteEvent = function (event){
-  event.preventDefault()
-  const filtered = store.newGame.events.filter((event) => event.id !== store.deleteEventId)
-  store.newGame.events = filtered
-    api.newEvent()
-      .then(ui.newEventSuccess)
-      .catch(ui.newEventFailure)
-}
+// const onDeleteEvent = function (event) {
+//   event.preventDefault()
+//   console.log('pre',store.newGame)
+//   const div = $(this).parents()[1]
+//   const id = $(div).attr('data-id')
+//   store.deleteEventId = id
+//   console.log(store.deleteEventId)
+// }
+//
+// const deleteEvent = function (event){
+//   event.preventDefault()
+//   const filtered = store.newGame.events.filter((event) => event.id !== store.deleteEventId)
+//   store.newGame.events = filtered
+//     api.newEvent()
+//       .then(ui.newEventSuccess)
+//       .catch(ui.newEventFailure)
+// }
 //
 // const editEvent = function (event) {
 //   event.preventDefault()
@@ -170,9 +170,9 @@ const gameTrackerHandlers = function () {
   )
   $(document).on('click','.allGamesButton',getOneGame
   )
-  $(document).on('click','.deleteGame',onDeleteGame
-  )
-  $(document).on('click','.yesDeleteGame', deleteGame)
+  // $(document).on('click','.deleteGame',onDeleteGame
+  // )
+  // $(document).on('click','.yesDeleteGame', deleteGame)
   $(document).on('click','.backToAllGamesButtons',onGameTracker
   )
   $(document).on('click','#ReturnFromNewGameButton',onGameTracker)
