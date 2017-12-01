@@ -27,7 +27,6 @@ const getGamesSuccess = function (games) {
 //   dateConvert(store.games)
 //   console.log(store.games)
   const userGames = store.games.filter((game) => game._owner === store.user.id)
-  console.log(userGames)
   const showGames = showGamesTemplate({
     games: userGames
   })
@@ -80,7 +79,6 @@ const deleteGameFailure = function () {
 }
 
 const createGameSuccess = function (data) {
-  console.log(data)
   $('#EventsForNewGame').show()
   document.getElementById('NewGameForm').reset()
   $('#NewGameForm').hide()
@@ -148,7 +146,6 @@ const editGameDetailsFailure = function () {
 
 const newEventSuccess = function () {
   document.getElementById('NewEventForm').reset()
-  console.log('ui level', store.newGame.events)
   store.deleteEventId = null
   const showEventFeedTemplate = eventFeedTemplate({
     events: store.newGame.events
@@ -160,13 +157,13 @@ const newEventFailure = function () {
   console.error()
 }
 
-const deleteEventSuccess = function () {
-  console.log('ui success')
-}
-
-const deleteEventFailure = function () {
-  console.error()
-}
+// const deleteEventSuccess = function () {
+//   console.log('ui success')
+// }
+//
+// const deleteEventFailure = function () {
+//   console.error()
+// }
 
 const onEditGameFromShowSuccess = function (data) {
   $('#GamesList').hide()
@@ -178,7 +175,6 @@ const onEditGameFromShowSuccess = function (data) {
   $('#NewGameButton').hide()
   document.getElementById('NewEventForm').reset()
   store.newGame = data.game
-  console.log(store.newGame)
   $('#EventsForNewGame').show()
   // const dateConvert = function (input) {
   //   const array = input.split('-')

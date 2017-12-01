@@ -47,7 +47,6 @@ const onChangePassword = function (event) {
   } else if (data.passwords.new === data.passwords.old) {
     $('#passwordChange').text('New and old passwords are the same. Please try again')
   } else {
-    console.log(data)
     api.changePassword(data)
       .then(ui.changePasswordSuccess)
       .catch(ui.changePasswordFailure)

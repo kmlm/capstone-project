@@ -3,10 +3,6 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
-const populateDashboard = function (data) {
-  console.log('dashboard data is', data)
-}
-
 const myDashboard = function () {
   if (store.team !== undefined && store.team !== null && store.team !== '') {
     $('#Dashboard').show()

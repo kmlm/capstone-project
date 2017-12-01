@@ -32,7 +32,6 @@ const deleteGame = function (id) {
 }
 
 const createGame = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'POST',

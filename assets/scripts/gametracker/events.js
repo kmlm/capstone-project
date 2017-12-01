@@ -59,7 +59,6 @@ const onNewGame = function () {
 
 const onCreateGame = function (event) {
   event.preventDefault()
-  console.log('click worked')
   store.newGame = {
     date: document.getElementById('NewGameForm').elements.item(0).value,
     home: document.getElementById('NewGameForm').elements.item(1).value,
@@ -95,7 +94,6 @@ const editGameDetails = function (event) {
 }
 
 const newEvent = function (event) {
-  console.log(store.newGame)
   event.preventDefault()
   const newEvent = {
     minute: document.getElementById('NewEventForm').elements.item(0).value,
@@ -105,8 +103,6 @@ const newEvent = function (event) {
     comment: document.getElementById('NewEventForm').elements.item(4).value
   }
   store.newGame.events.push(newEvent)
-  console.log(store.newGame)
-  console.log(store.newGame.events)
   api.newEvent()
     .then(() => api.getOneGame(store.newGame.id))
     .then(ui.onEditGameFromShowSuccess)
