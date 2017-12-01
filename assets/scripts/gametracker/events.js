@@ -160,10 +160,10 @@ const gameTrackerHandlers = function () {
   $('#EditGameForm').on('submit', editGameDetails)
   $('#CancelEditGameDetails').on('click', onCancelEditGameDetails)
   $('#NewEventForm').on('submit', newEvent)
-  $(document).on('click','.deleteEvent',onDeleteEvent
-  )
-  $(document).on('click','.yesDeleteEvent', deleteEvent
-  )
+  // $(document).on('click','.deleteEvent',onDeleteEvent
+  // )
+  // $(document).on('click','.yesDeleteEvent', deleteEvent
+  // )
   // $(document).on('click','.editEvent', editEvent
   // )
   $(document).on('click','.editGameFromShow',onEditGameFromShow
