@@ -225,8 +225,8 @@ module.exports = {
   editGameDetailsFailure,
   newEventSuccess,
   newEventFailure,
-  deleteEventSuccess,
-  deleteEventFailure,
+  // deleteEventSuccess,
+  // deleteEventFailure,
   onEditGameFromShowSuccess,
   onEditGameFromShowFailure
 }

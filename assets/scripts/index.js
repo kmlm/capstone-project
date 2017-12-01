@@ -12,7 +12,7 @@ $(() => {
 })
 
 $(() => {
-  authEvents.authHandlers(),
+  authEvents.authHandlers()
   dashboardEvents.dashboardHandlers()
   chooseTeamEvents.chooseTeamHandlers()
   gameTracker.gameTrackerHandlers()

@@ -165,9 +165,9 @@ const gameTrackerHandlers = function () {
   )
   $(document).on('click', '.allGamesButton', getOneGame
   )
-  $(document).on('click','.deleteGame',onDeleteGame
+  $(document).on('click', '.deleteGame', onDeleteGame
   )
-  $(document).on('click','.yesDeleteGame', deleteGame)
+  $(document).on('click', '.yesDeleteGame', deleteGame)
   $(document).on('click', '.backToAllGamesButtons', onGameTracker
   )
   $(document).on('click', '#ReturnFromNewGameButton', onGameTracker)

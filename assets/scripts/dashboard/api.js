@@ -1,2 +1,2 @@
-const config = require('../config.js')
-const store = require('../store')
+// const config = require('../config.js')
+// const store = require('../store')
