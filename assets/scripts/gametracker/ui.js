@@ -4,7 +4,6 @@ const showOneGameTemplate = require('../templates/game-show.handlebars')
 const currentGameDetailsTemplate = require('../templates/currentGameDetails.handlebars')
 const eventFeedTemplate = require('../templates/event-feed.handlebars')
 const noEventsTemplate = require('../templates/no-events.handlebars')
-const api = require('./api')
 
 const getGamesSuccess = function (games) {
   $('#GamesList').show()
@@ -85,17 +84,17 @@ const createGameSuccess = function (data) {
   $('#EventsForNewGame').show()
   document.getElementById('NewGameForm').reset()
   $('#NewGameForm').hide()
-  const dateConvert = function (input) {
-    const array = input.split('-')
-    const fixedArray = []
-    fixedArray[0] = array[1]
-    fixedArray[1] = array[2]
-    fixedArray[2] = array[0]
-    const converted = fixedArray.join('-')
-    return converted
-  }
-  const convertedDate = dateConvert(store.newGame.date)
-  store.newGame.date = convertedDate
+  // const dateConvert = function (input) {
+  //   const array = input.split('-')
+  //   const fixedArray = []
+  //   fixedArray[0] = array[1]
+  //   fixedArray[1] = array[2]
+  //   fixedArray[2] = array[0]
+  //   const converted = fixedArray.join('-')
+  //   return converted
+  // }
+  // const convertedDate = dateConvert(store.newGame.date)
+  // store.newGame.date = convertedDate
   store.newGame.id = data.game.id
   const currentGameDetails = {
     date: store.newGame.date,
