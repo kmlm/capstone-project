@@ -180,17 +180,17 @@ const onEditGameFromShowSuccess = function (data) {
   store.newGame = data.game
   console.log(store.newGame)
   $('#EventsForNewGame').show()
-  const dateConvert = function (input) {
-    const array = input.split('-')
-    const fixedArray = []
-    fixedArray[0] = array[1]
-    fixedArray[1] = array[2]
-    fixedArray[2] = array[0]
-    const converted = fixedArray.join('-')
-    return converted
-  }
-  const convertedDate = dateConvert(store.newGame.date)
-  store.newGame.date = convertedDate
+  // const dateConvert = function (input) {
+  //   const array = input.split('-')
+  //   const fixedArray = []
+  //   fixedArray[0] = array[1]
+  //   fixedArray[1] = array[2]
+  //   fixedArray[2] = array[0]
+  //   const converted = fixedArray.join('-')
+  //   return converted
+  // }
+  // const convertedDate = dateConvert(store.newGame.date)
+  // store.newGame.date = convertedDate
   store.newGame.id = data.game.id
   const currentGameDetails = {
     date: store.newGame.date,
