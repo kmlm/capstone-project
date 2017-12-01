@@ -14,8 +14,9 @@ const onGameTracker = function () {
   $('#EventsForNewGame').hide()
   $('#EventFeed').html('')
   document.getElementById('NewEventForm').reset()
-  $('#EditGameForm').hide()
   document.getElementById('EditGameForm').reset()
+  document.getElementById('NewGameForm').reset()
+  $('#EditGameForm').hide()
   store.newGame = null
   store.newEvent = null
   api.getGames()
@@ -84,7 +85,8 @@ const onCancelEditGameDetails = function () {
   document.getElementById('EditGameForm').reset()
 }
 
-const editGameDetails = function () {
+const editGameDetails = function (event) {
+    event.preventDefault()
     store.newGame.date = document.getElementById('EditGameForm').elements.item(0).value
     store.newGame.home =  document.getElementById('EditGameForm').elements.item(1).value
     store.newGame.away = document.getElementById('EditGameForm').elements.item(2).value
