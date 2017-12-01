@@ -10,7 +10,7 @@ The deployed application is available at: https://kmlm.github.io/capstone-projec
 The repository for the application's API is: https://github.com/kmlm/capstone-express-api
 
 
-[![App Screen](https://i.imgur.com/YOyUenF.jpg)]
+![App Screen](https://i.imgur.com/YOyUenF.jpg)
 
 ## Technologies Used
 
