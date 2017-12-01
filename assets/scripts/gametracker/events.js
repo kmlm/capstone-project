@@ -1,8 +1,7 @@
-const getFormFields = require('../../../lib/get-form-fields')
+
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
-const dashboard = require('../dashboard/events')
 
 const onGameTracker = function () {
   $('#GameTracker').show()
@@ -27,7 +26,7 @@ const onGameTracker = function () {
 const getOneGame = function () {
   const div = $(this).closest('div')
   const data = $(div).attr('data-id')
-    api.getOneGame(data)
+  api.getOneGame(data)
       .then(ui.getOneGameSuccess)
       .catch(ui.getOneGameFailure)
 }
@@ -40,7 +39,7 @@ const onDeleteGame = function () {
 
 const deleteGame = function (event) {
   event.preventDefault()
-    api.deleteGame(store.deleteGameId)
+  api.deleteGame(store.deleteGameId)
       .then(ui.deleteGameSuccess)
       .then(api.getGames)
       .then(ui.getGamesSuccess)
@@ -62,12 +61,12 @@ const onCreateGame = function (event) {
   event.preventDefault()
   console.log('click worked')
   store.newGame = {
-    date:  document.getElementById('NewGameForm').elements.item(0).value,
+    date: document.getElementById('NewGameForm').elements.item(0).value,
     home: document.getElementById('NewGameForm').elements.item(1).value,
-    away:  document.getElementById('NewGameForm').elements.item(2).value,
+    away: document.getElementById('NewGameForm').elements.item(2).value,
     events: []
-}
-    api.createGame(store.newGame)
+  }
+  api.createGame(store.newGame)
       .then(ui.createGameSuccess)
       .catch(ui.createGameFailure)
 }
@@ -86,16 +85,16 @@ const onCancelEditGameDetails = function () {
 }
 
 const editGameDetails = function (event) {
-    event.preventDefault()
-    store.newGame.date = document.getElementById('EditGameForm').elements.item(0).value
-    store.newGame.home =  document.getElementById('EditGameForm').elements.item(1).value
-    store.newGame.away = document.getElementById('EditGameForm').elements.item(2).value
-    api.editGameDetails()
+  event.preventDefault()
+  store.newGame.date = document.getElementById('EditGameForm').elements.item(0).value
+  store.newGame.home = document.getElementById('EditGameForm').elements.item(1).value
+  store.newGame.away = document.getElementById('EditGameForm').elements.item(2).value
+  api.editGameDetails()
       .then(ui.editGameDetailsSuccess)
       .catch(ui.editGameDetailsFailure)
-  }
+}
 
-const newEvent = function(event) {
+const newEvent = function (event) {
   console.log(store.newGame)
   event.preventDefault()
   const newEvent = {
@@ -166,21 +165,18 @@ const gameTrackerHandlers = function () {
   // )
   // $(document).on('click','.editEvent', editEvent
   // )
-  $(document).on('click','.editGameFromShow',onEditGameFromShow
+  $(document).on('click', '.editGameFromShow', onEditGameFromShow
   )
-  $(document).on('click','.allGamesButton',getOneGame
+  $(document).on('click', '.allGamesButton', getOneGame
   )
-  // $(document).on('click','.deleteGame',onDeleteGame
-  // )
-  // $(document).on('click','.yesDeleteGame', deleteGame)
-  $(document).on('click','.backToAllGamesButtons',onGameTracker
+  $(document).on('click','.deleteGame',onDeleteGame
   )
-  $(document).on('click','#ReturnFromNewGameButton',onGameTracker)
-  $(document).on('click','#EditCurrentGameDetailsButton',onEditCurrentGameDetails)
-
+  $(document).on('click','.yesDeleteGame', deleteGame)
+  $(document).on('click', '.backToAllGamesButtons', onGameTracker
+  )
+  $(document).on('click', '#ReturnFromNewGameButton', onGameTracker)
+  $(document).on('click', '#EditCurrentGameDetailsButton', onEditCurrentGameDetails)
 }
-
-
 
 module.exports = {
   gameTrackerHandlers

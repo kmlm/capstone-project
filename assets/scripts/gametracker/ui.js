@@ -6,7 +6,7 @@ const eventFeedTemplate = require('../templates/event-feed.handlebars')
 const noEventsTemplate = require('../templates/no-events.handlebars')
 const api = require('./api')
 
-const getGamesSuccess = function(games){
+const getGamesSuccess = function (games) {
   $('#GamesList').show()
   $('#SaveGameButton').hide()
   $('#ReturnFromNewGameButton').hide()
@@ -27,7 +27,7 @@ const getGamesSuccess = function(games){
 // }
 //   dateConvert(store.games)
 //   console.log(store.games)
-  const userGames = store.games.filter( (game) => game._owner === store.user.id )
+  const userGames = store.games.filter((game) => game._owner === store.user.id)
   console.log(userGames)
   const showGames = showGamesTemplate({
     games: userGames
@@ -35,11 +35,11 @@ const getGamesSuccess = function(games){
   $('#GamesList').html(showGames)
 }
 
-const getGamesFailure = function() {
+const getGamesFailure = function () {
   console.error()
 }
 
-const getOneGameSuccess = function(game) {
+const getOneGameSuccess = function (game) {
   $('#NewGame').hide()
   // const dateConvert = function(input) {
   //   const array = input.date.split('T')[0].split('-')
@@ -60,32 +60,32 @@ const getOneGameSuccess = function(game) {
   const showNoEvents = noEventsTemplate({
     game: game.game
   })
-  if ( game.game.events.length === 0) {
+  if (game.game.events.length === 0) {
     $('#OneGame').html(showNoEvents)
   } else {
-  $('#OneGame').html(showGame)
+    $('#OneGame').html(showGame)
   }
 }
 
-const getOneGameFailure = function() {
+const getOneGameFailure = function () {
   console.error()
 }
 
-const deleteGameSuccess = function() {
+const deleteGameSuccess = function () {
   $('#doc-message').text('Game Deleted Successfully')
   $('#OneGame').hide()
 }
 
-const deleteGameFailure = function() {
+const deleteGameFailure = function () {
   console.error()
 }
 
-const createGameSuccess = function(data) {
+const createGameSuccess = function (data) {
   console.log(data)
   $('#EventsForNewGame').show()
   document.getElementById('NewGameForm').reset()
   $('#NewGameForm').hide()
-  const dateConvert = function(input) {
+  const dateConvert = function (input) {
     const array = input.split('-')
     const fixedArray = []
     fixedArray[0] = array[1]
@@ -111,12 +111,12 @@ const createGameSuccess = function(data) {
   $('#EventFeed').html("<div class ='container'><h3> Your events will display here</h3></div>")
 }
 
-const createGameFailure = function() {
+const createGameFailure = function () {
   console.error()
 }
 
-const editGameDetailsSuccess = function (){
-  const dateConvert = function(input) {
+const editGameDetailsSuccess = function () {
+  const dateConvert = function (input) {
     const array = input.split('-')
     const fixedArray = []
     fixedArray[0] = array[1]
@@ -143,14 +143,13 @@ const editGameDetailsSuccess = function (){
   $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
 }
 
-const editGameDetailsFailure = function ()
-{
+const editGameDetailsFailure = function () {
   console.error()
 }
 
 const newEventSuccess = function () {
   document.getElementById('NewEventForm').reset()
-  console.log('ui level',store.newGame.events)
+  console.log('ui level', store.newGame.events)
   store.deleteEventId = null
   const showEventFeedTemplate = eventFeedTemplate({
     events: store.newGame.events
@@ -158,8 +157,7 @@ const newEventSuccess = function () {
   $('#EventFeed').html(showEventFeedTemplate)
 }
 
-const newEventFailure = function ()
-{
+const newEventFailure = function () {
   console.error()
 }
 
@@ -180,38 +178,39 @@ const onEditGameFromShowSuccess = function (data) {
   $('#NewGameInputArea').hide()
   $('#NewGameButton').hide()
   document.getElementById('NewEventForm').reset()
-   store.newGame = data.game
-   console.log(store.newGame)
-   $('#EventsForNewGame').show()
-   const dateConvert = function(input) {
-     const array = input.split('-')
-     const fixedArray = []
-     fixedArray[0] = array[1]
-     fixedArray[1] = array[2]
-     fixedArray[2] = array[0]
-     const converted = fixedArray.join('-')
-     return converted
-   }
-   const convertedDate = dateConvert(store.newGame.date)
-   store.newGame.date = convertedDate
-   store.newGame.id = data.game.id
-   const currentGameDetails = {
-     date: store.newGame.date,
-     home: store.newGame.home,
-     away: store.newGame.away
-   }
-   const showCurrentGameDetails = currentGameDetailsTemplate({
-     game: currentGameDetails
-   })
-   $('#CurrentGameDetailsDiv').show()
-   $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
-   const showEventFeedTemplate = eventFeedTemplate({
-     events: store.newGame.events
-   })
-   if (store.newGame.events.length === 0){
-     $('#EventFeed').html("<div class ='container'><h3> You have no events recorded for this game</h3></div>")
-   } else {   $('#EventFeed').html(showEventFeedTemplate)
- }
+  store.newGame = data.game
+  console.log(store.newGame)
+  $('#EventsForNewGame').show()
+  const dateConvert = function (input) {
+    const array = input.split('-')
+    const fixedArray = []
+    fixedArray[0] = array[1]
+    fixedArray[1] = array[2]
+    fixedArray[2] = array[0]
+    const converted = fixedArray.join('-')
+    return converted
+  }
+  const convertedDate = dateConvert(store.newGame.date)
+  store.newGame.date = convertedDate
+  store.newGame.id = data.game.id
+  const currentGameDetails = {
+    date: store.newGame.date,
+    home: store.newGame.home,
+    away: store.newGame.away
+  }
+  const showCurrentGameDetails = currentGameDetailsTemplate({
+    game: currentGameDetails
+  })
+  $('#CurrentGameDetailsDiv').show()
+  $('#CurrentGameDetailsDiv').html(showCurrentGameDetails)
+  const showEventFeedTemplate = eventFeedTemplate({
+    events: store.newGame.events
+  })
+  if (store.newGame.events.length === 0) {
+    $('#EventFeed').html("<div class ='container'><h3> You have no events recorded for this game</h3></div>")
+  } else {
+    $('#EventFeed').html(showEventFeedTemplate)
+  }
 }
 
 const onEditGameFromShowFailure = function () {

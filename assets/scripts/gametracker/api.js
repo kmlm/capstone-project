@@ -54,11 +54,11 @@ const editGameDetails = function () {
     },
     data: {
       game:
-        {
-          date: store.newGame.date,
-          home: store.newGame.home,
-          away: store.newGame.away
-        }
+      {
+        date: store.newGame.date,
+        home: store.newGame.home,
+        away: store.newGame.away
+      }
     }
   })
 }
@@ -72,9 +72,9 @@ const newEvent = function () {
     },
     data: {
       game:
-        {
-          events: store.newGame.events
-        }
+      {
+        events: store.newGame.events
+      }
     }
   })
 }
