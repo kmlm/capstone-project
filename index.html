@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>EPLdashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+
+  <!-- Navbar -->
+  <div class="container">
+
+    <nav class="navbar navbar-inverse ">
+      <!-- Add navbar-fixed-top? -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">EPLdashboard</a>
+        </div>
+        <section class='Signed-In-Nav'>
+        <ul class="nav navbar-nav">
+          <li class="active"><a id='myDashboard' href="#">My Dashboard</a></li>
+          <li><a id='game-tracker-nav' href="#">GameTracker</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account Management
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-target="#ChangePasswordModal" data-toggle="modal">Change Password</a></li>
+                <li><a id='change-favorite-team' href="#">Change Favorite Team</a></li>
+              </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id='Signed-In-User-Email'>User Id</a></li>
+          <li><a id='Sign-Out'>Sign Out</a></li>
+          <!-- <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
+      </section>
+      <section class='Signed-Out-Nav'>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" data-target="#SignUpModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#" data-target="#LoginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </section>
+    </div>
+    </nav>
+  </div>
+
+<!-- Doc Message -->
+<div class='container'>
+  <h4 id='doc-message'></h4>
+</div>
+
+<!-- Modals -->
+
+<div id="SignUpModal" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="sign-up">
+          <fieldset>
+            <!-- <legend>Sign up!</legend> -->
+            <input type="email" name="credentials[email]" placeholder="Enter Email" required id="signUpEmail">
+            <input type="password" name="credentials[password]" placeholder="Enter Password" required id="signUpPassword">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id="signUpPasswordConf">
+            <button type="submit" name="submit" value="Sign Up!" class="btn btn-primary">Submit</button>
+            <br>
+            <p id='sign-up-modal-message'> </p>
+          </fieldset>
+        </form>
+        <br>
+        <!-- <a href='#' data-target="#LoginModal" data-toggle="modal" data-dismiss="modal"><span> Already have an account? Sign In Here</span> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='sign-up-modal-close'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="LoginModal" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form id="login">
+          <fieldset>
+            <!-- <legend>Sign up!</legend> -->
+            <input type="email" name="credentials[email]" placeholder="Enter Email" required id="loginEmail">
+            <input type="password" name="credentials[password]" placeholder="Enter Password" required id="loginPassword">
+            <button type="submit" name="submit" value="Login!" class="btn btn-primary">Submit</button>
+            <br>
+            <p id='login-message'> </p>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='login-modal-close'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ChangePasswordModal" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Change Password</h4>
+      </div>
+      <div class="modal-body">
+        <form id="change-password-form">
+      <fieldset>
+        <!-- <legend>Change Password</legend> -->
+        <input type="password" name="passwords[old]" placeholder="Current Password" required id="changeOld">
+        <input type="password" name="passwords[new]" placeholder="New Password" required id="changeNew">
+        <button type="submit" name="submit" value="Change Password!" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+    <p id="passwordChange"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='cp-modal-close'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="deleteGameModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Are you sure you want to delete this game?</h3>
+          <div id="deleteAGame"></div>
+        </div>
+        <div class="modal-footer">
+          <form id="yesDeleteGameForm">
+            <div class="btn-group">
+              <input id="deleteGameId" type="hidden">
+              <button type="submit" class="btn btn-danger btn-lg yesDeleteGame" data-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-primary btn-lg noDeleteGame" data-dismiss="modal">No</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteEventModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Are you sure you want to delete this event?</h3>
+          <div id="deleteAEvent"></div>
+        </div>
+        <div class="modal-footer">
+          <form id="yesDeleteEventForm">
+            <div class="btn-group">
+              <!-- <input id="deleteBlogId" type="hidden" name="blogposts[id]"> -->
+              <button type="submit" class="btn btn-danger btn-lg yesDeleteEvent" data-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-primary btn-lg noDeleteEvent" data-dismiss="modal">No</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteEventFeatureInProgress" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Feature Coming Soon!</h3>
+          <div id="deleteAGame"></div>
+        </div>
+        <div class="modal-footer">
+          <form id="yesDeleteGameForm">
+            <div class="btn-group">
+              <input id="deleteGameId" type="hidden">
+              <button type="button" class="btn btn-primary btn-lg noDeleteGame" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Landing Page - Signed Out -->
+
+  <div id="Landing-Page-Signed-Out">
+
+    <!-- <div class='container'>
+      <h2> Please Sign Up or Login to reach your dashboard </h2>
+    </div> -->
+
+    <!-- Carousel -->
+
+    <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+          <li data-target="#myCarousel" data-slide-to="4"></li>
+          <li data-target="#myCarousel" data-slide-to="5"></li>
+          <li data-target="#myCarousel" data-slide-to="6"></li>
+          <li data-target="#myCarousel" data-slide-to="7"></li>
+          <li data-target="#myCarousel" data-slide-to="8"></li>
+          <li data-target="#myCarousel" data-slide-to="9"></li>
+          <li data-target="#myCarousel" data-slide-to="10"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="https://i.imgur.com/zrMHHR6.jpg" alt="bike">
+            <div class="carousel-caption">
+              <!-- <h3>Chania</h3>
+            <p>The atmosphere in Chania has a touch of Florence and Venice.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/vU6Ub44.jpg" alt="celebration">
+            <div class="carousel-caption">
+              <!-- <h3>Chania</h3>
+            <p>The atmosphere in Chania has a touch of Florence and Venice.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/jdOb5rw.jpg" alt="bubbles">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/y1pxEJN.jpg" alt="courtois">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/LSq1Kd5.jpg" alt="deGea">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+
+          <div class="item">
+            <img src="https://i.imgur.com/5wW6xvm.jpg" alt="kane">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/IpfrbAz.jpg" alt="goodBye">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/0WsMOcf.jpg" alt="moreno">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/OlfayLp.jpg" alt="stJames">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/T82BBNk.jpg" alt="sonny">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="https://i.imgur.com/1UCaosy.jpg" alt="sealTrick">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="https://i.imgur.com/j15vmJ8.jpg" alt="freeKick">
+            <div class="carousel-caption">
+              <!-- <h3>Flowers</h3>
+            <p>Beautiful flowers in Kolymbari, Crete.</p> -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      </div>
+
+    </div>
+
+    <div class='container'>
+      <h5> Images from PremierLeague.com </h5>
+    </div>
+
+<!-- <hr class="featurette-divider"> -->
+<br>
+
+
+    <div class='container' id='aboutSection'>
+
+      <div class="row featurette">
+      <div class="col-lg-4">
+        <h1 class="featurette-heading">About <span class="text-muted"></span></h1>
+        <!-- <p class="lead">EPLdashboard allows you to choose your favorite team and then monitor your dashboard for fixtures, standings, and current squad.</p> -->
+      </div>
+      <div class="col-lg-8">
+        <p> EPLdashboard allows you to choose your favorite team and then monitor your dashboard for information like fixtures and standings.</p>
+      </div>
+    </div>
+
+
+      <hr class="featurette-divider">
+
+
+      <div class="row featurette">
+      <div class="col-lg-4">
+        <h1 class="featurette-heading">GameTracker <span class="text-muted"></span></h1>
+        <!-- <p class="lead">EPLdashboard allows you to choose your favorite team and then monitor your dashboard for fixtures, standings, and current squad.</p> -->
+      </div>
+      <div class="col-lg-8">
+        <p> Designed for those that want to become a part of the action each game day, GameTracker allows you to keep track of every key event in the game!</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+
+    <div class="row featurette">
+    <div class="col-lg-4">
+      <h1 class="featurette-heading"> Create Your Dashboard<span class="text-muted"></span></h1>
+      <!-- <p class="lead">EPLdashboard allows you to choose your favorite team and then monitor your dashboard for fixtures, standings, and current squad.</p> -->
+        </div>
+        <div class="col-lg-8">
+          <p> Sign Up or Login to begin!</p>
+
+          <button type="button" class="btn btn-primary" data-target="#SignUpModal" data-toggle="modal" >Sign Up</button>
+          <button type="button" class="btn btn-success" data-target="#LoginModal" data-toggle="modal">Login</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <button data-toggle="collapse" data-target="#ChooseTeam">Choose Team</button> -->
+<!-- Choose Team  -->
+<div id='ChooseTeam' class="container">
+
+  <div class="col-lg-5">
+    <h2>Choose Your Team</h2>
+    <p>Your Dashboard will be created based on your favorite team</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Premier League Teams</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-id='Arsenal'>
+          <td>Arsenal</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Bournemouth' class="active">
+          <td>Bournemouth</td>
+          <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Brighton and Hove Albion'>
+          <td>Brighton and Hove Albion</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Burnley' class="active">
+          <td>Burnley</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Chelsea'>
+          <td>Chelsea</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Crystal Palace' class="active">
+          <td>Crystal Palace</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Everton'>
+          <td>Everton</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Huddersfield Town' class="active">
+          <td>Huddersfield Town</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Leicester City'>
+          <td>Leicester City</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Liverpool' class="active">
+          <td>Liverpool</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Manchester City' >
+          <td>Manchester City</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Manchester United' class="active">
+          <td>Manchester United</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Newcastle United'>
+          <td>Newcastle United</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Southampton' class="active">
+          <td>Southampton</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Stoke City' >
+          <td>Stoke City</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Swansea City' class="active">
+          <td>Swansea City</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Tottenham Hotspur' >
+          <td>Tottenham Hostpur</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='Watford' class="active">
+          <td>Watford</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='West Bromwich Albion'>
+          <td>West Bromwich Albion</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+        <tr data-id='West Ham United' class="active">
+          <td>West Ham United</td>
+            <td>  <button type="button" class="team-choice btn btn-success"> Make Favorite</button><td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<!-- My Dashboard -->
+<div id="Dashboard" class='container'>
+
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 id='TeamName' class="display-3"></h1>
+      <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+    </div>
+  </div>
+
+
+<h4> Click to add or subtract each feature from your dashboard...</h4>
+
+<br>
+
+<button type="button" id='top-scorers-button' class="toggle btn btn-success"> Top Scorers</button>
+
+<!-- <button type="button" id='match-centre-button' class="toggle btn btn-success"> Live Match Centre </button> -->
+
+<!-- <button type="button" id='next-fixture-button' class="toggle btn btn-success"> Next Fixture</button> -->
+
+<button type="button" id='League-Table-button' class="toggle btn btn-success"> League Table</button>
+
+<button type="button" id='Form-button' class="toggle btn btn-success"> Recent Form</button>
+
+<button type="button" id='Fixtures-button' class="toggle btn btn-success"> Fixtures</button>
+
+
+
+
+<!-- <div id='MatchCentre' class='container'>
+
+    <hr class="featurette-divider">
+
+    <h2> Live Match Centre </h2> -->
+    <!-- Load jQuery -->
+    <!-- <script src="//code.jquery.com/jquery-2.1.4.min.js"></script> -->
+
+    <!-- Load additional library -->
+    <!-- <script src="https://statsfc-4f51.kxcdn.com/widget/tipso.min.js"></script>
+    <link rel="stylesheet" href="https://statsfc-4f51.kxcdn.com/widget/tipso.min.css"> -->
+
+    <!-- Load Stats FC Results SDK -->
+    <!-- <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://statsfc-4f51.kxcdn.com/widget/match-centre.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'statsfc-match-centre-js'));
+    </script> -->
+
+    <!-- Your results here -->
+    <!-- <div class="statsfc-match-centre"
+        data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+        data-team="Liverpool">
+    </div>
+</div> -->
+
+
+
+<!-- <div id='NextFixture' class='container'>
+
+<section id='added-fixture'>
+
+</section> -->
+  <!-- <hr class="featurette-divider"> -->
+<!--
+  <h2> Next Fixture </h2> -->
+  <!-- Load jQuery -->
+      <!-- <script src="//code.jquery.com/jquery-2.1.4.min.js"></script> -->
+
+      <!-- Load Stats FC Next Fixture SDK -->
+      <!-- <script>
+          (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://statsfc-4f51.kxcdn.com/widget/next-fixture-1.0.js';
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'statsfc-next-fixture-js'));
+      </script> -->
+
+      <!-- Your next fixture here -->
+      <!-- <div id='next-fixture-div' class="statsfc-next-fixture"
+          data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+          data-team="Tottenham"
+          data-use-default-css="true">
+      </div> -->
+
+<!-- </div> -->
+
+
+
+<div id='Form' class='container'>
+
+  <hr class="featurette-divider">
+
+  <h2> Recent Form </h2>
+  <!-- Load jQuery -->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- Load Stats FC Team Form SDK -->
+  <script>
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://statsfc-4f51.kxcdn.com/widget/form-2.0.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'statsfc-form-js'));
+  </script>
+
+  <!-- Your team form here -->
+  <div class="statsfc-form"
+      data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+      data-competition="EPL"
+      data-show-badges="true"
+      data-show-score="true"
+      data-use-default-css="true">
+  </div>
+</div>
+
+
+
+
+<div id='League-Table' class='container'>
+
+  <hr class="featurette-divider">
+
+  <h2> League Table </h2>
+  <!-- Load jQuery -->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!-- Load Stats FC League Table SDK -->
+  <script>
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://statsfc-4f51.kxcdn.com/widget/table-2.0.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'statsfc-table-js'));
+  </script>
+
+  <!-- Your league table here -->
+  <div class="statsfc-table"
+      data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+      data-competition="EPL"
+      data-table-type="full"
+      data-show-badges="true"
+      data-use-default-css="true">
+  </div>
+
+
+</div>
+
+
+
+<div id='Fixtures' class='container'>
+
+  <hr class="featurette-divider">
+
+  <h2> Upcoming Fixtures </h2>
+      <!-- Load jQuery -->
+      <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+      <!-- Load Stats FC Fixtures SDK -->
+      <script>
+          (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://statsfc-4f51.kxcdn.com/widget/fixtures-2.0.js';
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'statsfc-fixtures-js'));
+      </script>
+
+      <!-- Your fixtures here -->
+      <div class="statsfc-fixtures"
+          data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+          data-competition="EPL"
+          data-show-badges="true"
+          data-use-default-css="true">
+      </div>
+
+</div>
+
+
+
+<div id='Top-Scorers' class='container'>
+
+  <hr class="featurette-divider">
+
+<h2> Top Scorers </h2>
+    <!-- Load jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Load Stats FC Top Scorers SDK -->
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://statsfc-4f51.kxcdn.com/widget/top-scorers-2.0.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'statsfc-top-scorers-js'));
+    </script>
+
+    <!-- Your top scorers here -->
+    <div class="statsfc-top-scorers"
+        data-key="bXBdah2OOD0LsTjdOIVNZ7cdIqHzM4WdQmcsLO_X"
+        data-competition="EPL"
+        data-show-badges="true"
+        data-use-default-css="true">
+    </div>
+
+</div>
+
+</div>
+
+<div id='GameTracker' class='container'>
+  <!-- <h3>GameTracker</h3> -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 id='GameTrackerJumbo' class="display-3">GameTracker</h1>
+      <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+    </div>
+  </div>
+
+  <br>
+    <div id='GameTrackerOptions'>
+      <button id='NewGameButton' class='btn btn-primary'>
+        New Game
+      </button>
+      <!-- <button id='SaveGameButton' class='btn btn-primary'> Save Game</button> -->
+      <button id='ReturnFromNewGameButton' class='btn btn-primary'> Return to All Games</button>
+    </div>
+      <hr class="featurette-divider">
+
+  <div id='GamesList'>
+
+</div>
+
+<div id='OneGame'>
+
+</div>
+
+<div id='NewGame'>
+
+        <div id='NewGameInputArea'>
+
+          <form id='NewGameForm'>
+
+      <div class="form-group">
+        <label for="GameDate">Game Date</label>
+        <input type="date" required class="form-control" id="GameDate">
+      </div>
+      <div class="form-group">
+        <label for="HomeTeam">Home Team</label>
+        <select class="form-control" id="HomeTeam" required placeholder='-'>
+        <option value="" disabled selected>Select Team</option>
+        <option>Arsenal</option>
+        <option>Bournemouth</option>
+        <option>Brighton and Hove Albion</option>
+        <option>Burnley</option>
+        <option>Chelsea</option>
+        <option>Crystal Palace</option>
+        <option>Everton</option>
+        <option>Huddersfield Town</option>
+        <option>Leicester City</option>
+        <option>Liverpool</option>
+        <option>Manchester City</option>
+        <option>Manchester United</option>
+        <option>Newcastle United</option>
+        <option>Southampton</option>
+        <option>Stoke City</option>
+        <option>Swansea City</option>
+        <option>Tottenham Hostpur</option>
+        <option>Watford</option>
+        <option>West Bromwich Albion</option>
+        <option>West Ham United</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label for="AwayTeam">Away Team</label>
+        <select class="form-control" id="AwayTeam" required >
+          <option value="" disabled selected>Select Team</option>
+          <option>Arsenal</option>
+          <option>Bournemouth</option>
+          <option>Brighton and Hove Albion</option>
+          <option>Burnley</option>
+          <option>Chelsea</option>
+          <option>Crystal Palace</option>
+          <option>Everton</option>
+          <option>Huddersfield Town</option>
+          <option>Leicester City</option>
+          <option>Liverpool</option>
+          <option>Manchester City</option>
+          <option>Manchester United</option>
+          <option>Newcastle United</option>
+          <option>Southampton</option>
+          <option>Stoke City</option>
+          <option>Swansea City</option>
+          <option>Tottenham Hostpur</option>
+          <option>Watford</option>
+          <option>West Bromwich Albion</option>
+          <option>West Ham United</option>
+      </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Start Tracking!</button>
+    </form>
+
+    <form id='EditGameForm'>
+
+  <div class="form-group">
+  <label for="GameDate">Game Date</label>
+  <input type="date" required class="form-control" id="GameDate">
+  </div>
+  <div class="form-group">
+  <label for="HomeTeam">Home Team</label>
+  <select class="form-control" id="HomeTeam" required placeholder='-'>
+  <option value="" disabled selected>Select Team</option>
+  <option>Arsenal</option>
+  <option>Bournemouth</option>
+  <option>Brighton and Hove Albion</option>
+  <option>Burnley</option>
+  <option>Chelsea</option>
+  <option>Crystal Palace</option>
+  <option>Everton</option>
+  <option>Huddersfield Town</option>
+  <option>Leicester City</option>
+  <option>Liverpool</option>
+  <option>Manchester City</option>
+  <option>Manchester United</option>
+  <option>Newcastle United</option>
+  <option>Southampton</option>
+  <option>Stoke City</option>
+  <option>Swansea City</option>
+  <option>Tottenham Hostpur</option>
+  <option>Watford</option>
+  <option>West Bromwich Albion</option>
+  <option>West Ham United</option>
+  </select>
+  </div>
+  <div class="form-group">
+  <label for="AwayTeam">Away Team</label>
+  <select class="form-control" id="AwayTeam" required >
+    <option value="" disabled selected>Select Team</option>
+    <option>Arsenal</option>
+    <option>Bournemouth</option>
+    <option>Brighton and Hove Albion</option>
+    <option>Burnley</option>
+    <option>Chelsea</option>
+    <option>Crystal Palace</option>
+    <option>Everton</option>
+    <option>Huddersfield Town</option>
+    <option>Leicester City</option>
+    <option>Liverpool</option>
+    <option>Manchester City</option>
+    <option>Manchester United</option>
+    <option>Newcastle United</option>
+    <option>Southampton</option>
+    <option>Stoke City</option>
+    <option>Swansea City</option>
+    <option>Tottenham Hostpur</option>
+    <option>Watford</option>
+    <option>West Bromwich Albion</option>
+    <option>West Ham United</option>
+  </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button id='CancelEditGameDetails' class='btn btn-danger'> Cancel </button>
+  </form>
+
+      </div>
+
+
+      <div id='CurrentGameDetailsDiv'>
+
+      </div>
+
+        <hr class='featurette-divider'>
+
+      <div id='EventsForNewGame'>
+        <h3> Add events here...</h3>
+
+          <!-- <hr class='featurette-divider'> -->
+
+        <div id='newEventInputDiv'>
+            <form id='NewEventForm' >
+              <div class="form-group">
+              <label for="EventMinute">Minute</label>
+              <input type="number" min='0' max='150' required class="form-control" id="EventMinute">
+              </div>
+              <div class="form-group">
+              <label for="EventTeam">Team</label>
+              <input type="text" required class="form-control" id="EventTeam">
+              </div>
+              <div class="form-group">
+                <label for="EventType">Event Type</label>
+                <select class="form-control" id="EventType" required >
+                  <option value="" disabled selected></option>
+                  <option>Goal</option>
+                  <option>Penalty</option>
+                  <option>Foul</option>
+                  <option>Yellow Card</option>
+                  <option>Red Card</option>
+                  <option>Save</option>
+                </select>
+              </div>
+              <div class="form-group">
+              <label for="EventPlayer">Player</label>
+              <input type="text" required class="form-control" id="EventPlayer">
+              </div>
+              <div class="form-group">
+              <label for="EventComment">Comments</label>
+              <textarea type="text" required class="form-control" id="EventComment"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Event</button>
+            </form>
+        </div>
+
+        <hr class='featurette-divider'>
+
+        <h3> Your Event Feed </h3>
+            <div id='EventFeed'>
+            </div>
+
+      </div>
+
+</div>
+
+</div>
+
+</body>
+
+<footer class="container" id='footer'>
+  <p>KMLM Boston, MA 2017 </p>
+</footer>
+
+</html>
